@@ -2,9 +2,9 @@
 
 namespace App\Domains\Auth\Listeners;
 
-use App\Domains\Auth\Events\Role\RoleCreated;
-use App\Domains\Auth\Events\Role\RoleDeleted;
-use App\Domains\Auth\Events\Role\RoleUpdated;
+use App\Domains\Auth\Events\Role\ProjectCreated;
+use App\Domains\Auth\Events\Role\ProjectDeleted;
+use App\Domains\Auth\Events\Role\ProjectUpdated;
 
 /**
  * Class RoleEventListener.
@@ -63,17 +63,17 @@ class RoleEventListener
     public function subscribe($events)
     {
         $events->listen(
-            RoleCreated::class,
+            ProjectCreated::class,
             'App\Domains\Auth\Listeners\RoleEventListener@onCreated'
         );
 
         $events->listen(
-            RoleUpdated::class,
+            ProjectUpdated::class,
             'App\Domains\Auth\Listeners\RoleEventListener@onUpdated'
         );
 
         $events->listen(
-            RoleDeleted::class,
+            ProjectDeleted::class,
             'App\Domains\Auth\Listeners\RoleEventListener@onDeleted'
         );
     }

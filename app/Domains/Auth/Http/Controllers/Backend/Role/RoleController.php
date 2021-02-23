@@ -2,10 +2,10 @@
 
 namespace App\Domains\Auth\Http\Controllers\Backend\Role;
 
-use App\Domains\Auth\Http\Requests\Backend\Role\DeleteRoleRequest;
-use App\Domains\Auth\Http\Requests\Backend\Role\EditRoleRequest;
-use App\Domains\Auth\Http\Requests\Backend\Role\StoreRoleRequest;
-use App\Domains\Auth\Http\Requests\Backend\Role\UpdateRoleRequest;
+use App\Domains\Auth\Http\Requests\Backend\Role\DeleteThemeRequest;
+use App\Domains\Auth\Http\Requests\Backend\Role\EditThemeRequest;
+use App\Domains\Auth\Http\Requests\Backend\Role\StoreThemeRequest;
+use App\Domains\Auth\Http\Requests\Backend\Role\UpdateThemeRequest;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;
@@ -56,13 +56,13 @@ class RoleController
     }
 
     /**
-     * @param  StoreRoleRequest  $request
+     * @param  StoreThemeRequest  $request
      *
      * @return mixed
      * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
      */
-    public function store(StoreRoleRequest $request)
+    public function store(StoreThemeRequest $request)
     {
         $this->roleService->store($request->validated());
 
@@ -70,12 +70,12 @@ class RoleController
     }
 
     /**
-     * @param  EditRoleRequest  $request
+     * @param  EditThemeRequest  $request
      * @param  Role  $role
      *
      * @return mixed
      */
-    public function edit(EditRoleRequest $request, Role $role)
+    public function edit(EditThemeRequest $request, Role $role)
     {
         return view('backend.auth.role.edit')
             ->withCategories($this->permissionService->getCategorizedPermissions())
@@ -85,14 +85,14 @@ class RoleController
     }
 
     /**
-     * @param  UpdateRoleRequest  $request
+     * @param  UpdateThemeRequest  $request
      * @param  Role  $role
      *
      * @return mixed
      * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
      */
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(UpdateThemeRequest $request, Role $role)
     {
         $this->roleService->update($role, $request->validated());
 
@@ -100,13 +100,13 @@ class RoleController
     }
 
     /**
-     * @param  DeleteRoleRequest  $request
+     * @param  DeleteThemeRequest  $request
      * @param  Role  $role
      *
      * @return mixed
      * @throws \Exception
      */
-    public function destroy(DeleteRoleRequest $request, Role $role)
+    public function destroy(DeleteThemeRequest $request, Role $role)
     {
         $this->roleService->destroy($role);
 

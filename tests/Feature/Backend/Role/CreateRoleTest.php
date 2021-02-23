@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use App\Domains\Auth\Events\Role\RoleCreated;
+use App\Domains\Auth\Events\Role\ProjectCreated;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
@@ -70,7 +70,7 @@ class CreateRoleTest extends TestCase
             'role_id' => Role::whereName('new role')->first()->id,
         ]);
 
-        Event::assertDispatched(RoleCreated::class);
+        Event::assertDispatched(ProjectCreated::class);
     }
 
     /** @test */

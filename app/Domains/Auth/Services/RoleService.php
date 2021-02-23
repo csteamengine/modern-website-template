@@ -2,9 +2,9 @@
 
 namespace App\Domains\Auth\Services;
 
-use App\Domains\Auth\Events\Role\RoleCreated;
-use App\Domains\Auth\Events\Role\RoleDeleted;
-use App\Domains\Auth\Events\Role\RoleUpdated;
+use App\Domains\Auth\Events\Role\ProjectCreated;
+use App\Domains\Auth\Events\Role\ProjectDeleted;
+use App\Domains\Auth\Events\Role\ProjectUpdated;
 use App\Domains\Auth\Models\Role;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
@@ -46,7 +46,7 @@ class RoleService extends BaseService
             throw new GeneralException(__('There was a problem creating the role.'));
         }
 
-        event(new RoleCreated($role));
+        event(new ProjectCreated($role));
 
         DB::commit();
 
@@ -74,7 +74,7 @@ class RoleService extends BaseService
             throw new GeneralException(__('There was a problem updating the role.'));
         }
 
-        event(new RoleUpdated($role));
+        event(new ProjectUpdated($role));
 
         DB::commit();
 
@@ -94,7 +94,7 @@ class RoleService extends BaseService
         }
 
         if ($this->deleteById($role->id)) {
-            event(new RoleDeleted($role));
+            event(new ProjectDeleted($role));
 
             return true;
         }
