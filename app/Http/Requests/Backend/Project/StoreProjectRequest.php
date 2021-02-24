@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Role;
+namespace App\Http\Requests\Backend\Project;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -19,7 +19,8 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! $this->role->isAdmin();
+        //TODO update authorize
+        return true;
     }
 
     /**
@@ -29,8 +30,17 @@ class StoreProjectRequest extends FormRequest
      */
     public function rules()
     {
+        //TODO update rules
         return [
-            //
+            'title' => 'required|string',
+            'short_description' => 'sometimes|string',
+            'description' => 'sometimes|string',
+            'page_content' => 'sometimes|string',
+            'external_url' => 'sometimes|url',
+            'is_active' => 'sometimes|boolean',
+            'started_at' => 'sometimes|date',
+            'finished_at' => 'sometimes|date|after_or_equal:started_at',
+            'media' => 'nullable|image',
         ];
     }
 
@@ -43,6 +53,6 @@ class StoreProjectRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('You can not edit projects.'));
+        throw new AuthorizationException(__('You can not create projects.'));
     }
 }

@@ -22,13 +22,15 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
+        "laravelcollective/html": "^6.2",
         "livewire/livewire": "^2.0",
         "rappasoft/laravel-livewire-tables": "^0.3",
         "rappasoft/lockout": "^3.0",
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^3.11",
-        "tabuna/breadcrumbs": "^2.2"
+        "tabuna/breadcrumbs": "^2.2",
+      "ext-json": "*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

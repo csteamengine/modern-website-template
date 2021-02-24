@@ -9,6 +9,8 @@ use App\Domains\Auth\Http\Requests\Backend\Role\UpdateThemeRequest;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;
+use App\Exceptions\GeneralException;
+use Throwable;
 
 /**
  * Class RoleController.
@@ -59,8 +61,8 @@ class RoleController
      * @param  StoreThemeRequest  $request
      *
      * @return mixed
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Throwable
      */
     public function store(StoreThemeRequest $request)
     {
@@ -89,8 +91,8 @@ class RoleController
      * @param  Role  $role
      *
      * @return mixed
-     * @throws \App\Exceptions\GeneralException
-     * @throws \Throwable
+     * @throws GeneralException
+     * @throws Throwable
      */
     public function update(UpdateThemeRequest $request, Role $role)
     {

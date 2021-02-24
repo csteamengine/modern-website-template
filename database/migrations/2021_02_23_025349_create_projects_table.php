@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
             $table->longText('page_content')->nullable();
             $table->string('external_url')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->integer('order')->default(0);
             $table->date('started_at')->nullable();
             $table->date('finished_at')->nullable();
             $table->softDeletes();

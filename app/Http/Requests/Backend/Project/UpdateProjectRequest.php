@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Role;
+namespace App\Http\Requests\Backend\Project;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -19,7 +19,8 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! $this->role->isAdmin();
+        //TODO determine if the user is admin
+        return true;
     }
 
     /**
@@ -29,8 +30,17 @@ class UpdateProjectRequest extends FormRequest
      */
     public function rules()
     {
+        //TODO update Rules
         return [
-            //
+            'title' => 'required|string',
+            'short_description' => 'nullable|string',
+            'description' => 'nullable|string',
+            'page_content' => 'nullable|string',
+            'external_url' => 'nullable|url',
+            'is_active' => 'sometimes|boolean',
+            'started_at' => 'nullable|date',
+            'finished_at' => 'nullable|date|after_or_equal:started_at',
+            'media.*' => 'nullable|image',
         ];
     }
 

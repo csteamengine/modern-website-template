@@ -26,12 +26,13 @@ class ProjectFactory extends Factory
         $endDate = Carbon::createFromFormat('Y-m-d H:i:s', $startDate)->addWeek();
 
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->catchPhrase,
             'short_description' => $this->faker->text(100),
             'description' => $this->faker->text,
             'page_content' => $this->faker->randomHtml(),
             'external_url' => $this->faker->url,
             'is_active' => true,
+            'order' => $this->faker->randomNumber(),
             'started_at' => $startDate,
             'finished_at' => $endDate,
         ];

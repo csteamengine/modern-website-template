@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Role;
+namespace App\Http\Requests\Backend\Project;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
@@ -17,7 +17,8 @@ class DeleteProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! $this->role->isAdmin();
+        //TODO update authorize
+        return true;
     }
 
     /**
@@ -27,6 +28,7 @@ class DeleteProjectRequest extends FormRequest
      */
     public function rules()
     {
+        //TODO update rules
         return [
             //
         ];

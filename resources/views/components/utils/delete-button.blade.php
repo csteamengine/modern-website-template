@@ -7,5 +7,5 @@
     button-class="btn btn-danger btn-sm"
     permission="{{ $permission }}"
 >
-    <i class="fas fa-trash"></i> {{ $text }}
+    <i class="fas fa-trash"></i>
 </x-utils.form-button>
