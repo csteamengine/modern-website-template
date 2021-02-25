@@ -27,3 +27,5 @@ Route::get('projects/', [ProjectController::class, 'index'])->name('projects');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('links', [LinkController::class, 'index'])->name('links');
 Route::get('links/{link}', [LinkController::class, 'show'])->name('links.show');
+Route::get('positions', [LinkController::class, 'index'])->name('positions');
+Route::get('positions/{position}', [LinkController::class, 'show'])->name('positions.show');

@@ -18,6 +18,8 @@
         </x-slot>
     </x-backend.card>
     <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">
+    <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.themes.reorder')}}">
+
 @endsection
 
 

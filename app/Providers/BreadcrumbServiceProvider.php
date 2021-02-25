@@ -2,6 +2,7 @@
 namespace App\Providers;
 
 use App\Models\Link;
+use App\Models\Position;
 use App\Models\Theme;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Project;
@@ -93,6 +94,30 @@ class BreadcrumbServiceProvider extends ServiceProvider
             function (Trail $trail) {
                 return $trail->parent('admin.links.index')
                     ->push('Create Link', route('admin.links.create'));
+            }
+        );
+
+        Breadcrumbs::for(
+            'admin.positions.index',
+            function (Trail $trail) {
+                return $trail->parent('admin.dashboard')
+                    ->push('Positions', route('admin.positions.index'));
+            }
+        );
+
+        Breadcrumbs::for(
+            'admin.positions.edit',
+            function (Trail $trail, Position $position) {
+                return $trail->parent('admin.positions.index')
+                    ->push('Edit Position', route('admin.positions.edit', $position));
+            }
+        );
+
+        Breadcrumbs::for(
+            'admin.positions.create',
+            function (Trail $trail) {
+                return $trail->parent('admin.positions.index')
+                    ->push('Create Position', route('admin.positions.create'));
             }
         );
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Theme;
+namespace App\Http\Requests\Backend\Position;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 /**
  * Class StoreRoleRequest.
  */
-class StoreThemeRequest extends FormRequest
+class StorePositionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,20 +31,14 @@ class StoreThemeRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'company' => 'required|string',
             'description' => 'sometimes|string',
+            'short_description' => 'sometimes|string',
             'page_content' => 'nullable|string',
-            'email' => 'required|email',
             'is_active' => 'sometimes|boolean',
             'media.*' => 'nullable|image',
-            'resume' => 'nullable|file',
-            'background_image' => 'nullable|image',
-            'about_image' => 'nullable|image',
-            'is_maintenance_mode' => 'sometimes|boolean',
-            'contact_active' => 'sometimes|boolean',
-            'resume_active' => 'sometimes|boolean',
-            'background_video_active' => 'sometimes|boolean',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:started_at',
         ];
     }
 
@@ -57,6 +51,6 @@ class StoreThemeRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('You can not edit themes.'));
+        throw new AuthorizationException(__('You can not edit positions.'));
     }
 }

@@ -33,5 +33,6 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="{{ mix('js/backend/links/links.js') }}"></script>
+    <script src="{{ mix('js/backend/includes/reorder.js') }}"></script>
 @endpush
 

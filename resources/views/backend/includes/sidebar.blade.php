@@ -28,10 +28,10 @@
         <li class="c-sidebar-nav-item">
             <x-utils.link
                 class="c-sidebar-nav-link"
-                :href="route('admin.themes.index')"
-                :active="activeClass(Route::is('admin.themes.index'), 'c-active')"
-                icon="c-sidebar-nav-icon cil-paint-bucket"
-                :text="__('Themes')" />
+                :href="route('admin.positions.index')"
+                :active="activeClass(Route::is('admin.positions.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-user"
+                :text="__('Positions')" />
         </li>
         <li class="c-sidebar-nav-item">
             <x-utils.link
@@ -41,6 +41,15 @@
                 icon="c-sidebar-nav-icon cil-external-link"
                 :text="__('Links')" />
         </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.themes.index')"
+                :active="activeClass(Route::is('admin.themes.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-paint-bucket"
+                :text="__('Themes')" />
+        </li>
+
 
         @if (
             $logged_in_user->hasAllAccess() ||

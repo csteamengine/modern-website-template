@@ -187,5 +187,7 @@
     "You can not set a password that you have previously used within the last 3 times.": "Vous ne pouvez pas définir un mot de passe que vous avez déjà utilisé au cours des 3 dernières fois.",
     "These credentials do not match our records.": "Ces informations d'identification ne correspondent pas à nos enregistrements.",
     "Editing :role": "Modification :role",
-    "Home": "Accueil"
+    "Home": "Accueil",
+    "Successfully activated the theme.": "",
+    "Failed to activate the theme.": ""
 }

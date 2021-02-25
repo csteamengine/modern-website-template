@@ -19,9 +19,19 @@ class ThemesTableSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@example.com',
             'title' => 'First Theme',
+            'job_title' => 'First Theme',
+            'github_url' => 'www.example.com',
+            'facebook_url' => 'www.example.com',
+            'instagram_url' => 'www.example.com',
+            'twitter_url' => 'www.example.com',
+            'youtube_url' => 'www.example.com',
+            'tiktok_url' => 'www.example.com',
             'description' => 'This is the first theme',
             'page_content' => '<h1>Theme 1</h1>',
             'is_active' => true,
+            'primary_color' => '#FDB716',
+            'secondary_color' => '#0099cc',
+            'background_color' => '#004C4C',
         ]);
 
         Theme::create([
@@ -29,9 +39,19 @@ class ThemesTableSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@example.com',
             'title' => 'Second Theme',
+            'job_title' => 'First Theme',
+            'github_url' => 'www.example.com',
+            'facebook_url' => 'www.example.com',
+            'instagram_url' => 'www.example.com',
+            'twitter_url' => 'www.example.com',
+            'youtube_url' => 'www.example.com',
+            'tiktok_url' => 'www.example.com',
             'description' => 'This is the Second theme',
             'page_content' => '<h1>Theme 2</h1>',
-            'is_active' => true,
+            'is_active' => false,
+            'primary_color' => '#FDB716',
+            'secondary_color' => '#0099cc',
+            'background_color' => '#004C4C',
         ]);
 
         Theme::create([
@@ -39,9 +59,19 @@ class ThemesTableSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@example.com',
             'title' => 'Third Theme',
+            'job_title' => 'First Theme',
+            'github_url' => 'www.example.com',
+            'facebook_url' => 'www.example.com',
+            'instagram_url' => 'www.example.com',
+            'twitter_url' => 'www.example.com',
+            'youtube_url' => 'www.example.com',
+            'tiktok_url' => 'www.example.com',
             'description' => 'This is the third theme',
             'page_content' => '<h1>Theme 3</h1>',
-            'is_active' => true,
+            'is_active' => false,
+            'primary_color' => '#FDB716',
+            'secondary_color' => '#0099cc',
+            'background_color' => '#004C4C',
         ]);
     }
 }

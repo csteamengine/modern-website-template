@@ -11,6 +11,7 @@ use App\Services\LinkService;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -36,6 +37,7 @@ class LinkController extends Controller
     public function __construct(LinkService $linkService)
     {
         $this->linkService = $linkService;
+
     }
     /**
      * Display a listing of the resource.
@@ -73,7 +75,9 @@ class LinkController extends Controller
 
         $this->addFiles($request, $link);
 
-        return redirect()->route('admin.links.edit', $link)->withFlashSuccess("Successfully Created the Link");
+        return redirect()
+            ->route('admin.links.edit', $link)
+            ->withFlashSuccess(__("Successfully Created the Link"));
     }
 
     /**
@@ -120,7 +124,9 @@ class LinkController extends Controller
 
         $this->addFiles($request, $link);
 
-        return redirect()->route('admin.links.edit', $link)->withFlashSuccess("Successfully Updated the Link");
+        return redirect()
+            ->route('admin.links.edit', $link)
+            ->withFlashSuccess(__("Successfully Updated the Link"));
     }
 
     /**
@@ -132,7 +138,8 @@ class LinkController extends Controller
     public function addFiles(Request $request, Link $link)
     {
         if ($request->hasFile('image')) {
-            $link->addMedia($request->file('image'))->toMediaCollection('images');
+            $link->addMedia($request->file('image'))
+                ->toMediaCollection('images');
         }
     }
 
@@ -148,7 +155,8 @@ class LinkController extends Controller
     {
         $this->linkService->destroy($link);
 
-        return redirect()->back()->withFlashSuccess(__('The link was successfully deleted.'));
+        return redirect()->back()
+            ->withFlashSuccess(__('The link was successfully deleted.'));
     }
 
     /**
@@ -157,43 +165,11 @@ class LinkController extends Controller
      */
     public function activate(Link $link)
     {
-        if ($link) {
-            $link->is_active = ! $link->is_active;
-
-            $updateSuccess = $link->save();
-
-            if ($updateSuccess) {
-                return response()->json([
-                    'message' => "Successfully toggled the link status",
-                ], 200);
-            }
-        }
-
-        return response()->json([
-            'message' => "Failed To toggle the link status",
-        ], 400);
+        return activate($link);
     }
 
     public function reorder(Request $request)
     {
-        $validatedJSON = $request->validate([
-            'links' => 'required|JSON',
-        ]);
-
-        $data = json_decode($validatedJSON['links']);
-
-        foreach ($data as $JSONlink) {
-            $link = Link::find($JSONlink->link_id);
-            $link->order = $JSONlink->order;
-            if (! $link->save()) {
-                return response()->json([
-                    'message' => 'Failed to update the link order!',
-                ], 400);
-            }
-        }
-
-        return response()->json([
-            'message' => "Successfully updated the link order!",
-        ], 200);
+        return reorderObjects($request, Link::class);
     }
 }

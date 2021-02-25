@@ -46,10 +46,15 @@ class ThemeService extends BaseService
                 'description' => $data['description'],
                 'page_content' => $data['page_content'],
                 'is_active' => isset($data['is_active']),
+                'is_maintenance_mode' => isset($data['is_maintenance_mode']),
+                'contact_active' => isset($data['contact_active']),
+                'resume_active' => isset($data['resume_active']),
+                'background_video_active' => isset($data['background_video_active']),
+                'primary_color' => $data['primary_color'],
+                'secondary_color' => $data['secondary_color'],
+                'background_color' => $data['background_color'],
             ]);
         } catch (Exception $e) {
-            dump($e);
-            exit;
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem creating the theme.'));
@@ -83,6 +88,13 @@ class ThemeService extends BaseService
                 'description' => $data['description'],
                 'page_content' => $data['page_content'],
                 'is_active' => isset($data['is_active']),
+                'is_maintenance_mode' => isset($data['is_maintenance_mode']),
+                'contact_active' => isset($data['contact_active']),
+                'resume_active' => isset($data['resume_active']),
+                'background_video_active' => isset($data['background_video_active']),
+                'primary_color' => $data['primary_color'],
+                'secondary_color' => $data['secondary_color'],
+                'background_color' => $data['background_color'],
             ]);
         } catch (Exception $e) {
             DB::rollBack();

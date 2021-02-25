@@ -41,6 +41,13 @@ class UpdateThemeRequest extends FormRequest
             'resume' => 'nullable|file',
             'background_image' => 'nullable|image',
             'about_image' => 'nullable|image',
+            'is_maintenance_mode' => 'sometimes|boolean',
+            'contact_active' => 'sometimes|boolean',
+            'resume_active' => 'sometimes|boolean',
+            'background_video_active' => 'sometimes|boolean',
+            'primary_color' => '#FDB716',
+            'secondary_color' => '#0099cc',
+            'background_color' => '#004C4C',
         ];
     }
 

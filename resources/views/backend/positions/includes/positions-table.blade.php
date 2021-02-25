@@ -4,34 +4,36 @@
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 @endpush
-<table id="projectsTable" class="display reorder-table" style="width:100%">
+<table id="positionsTable" class="display reorder-table" style="width:100%">
     <thead>
     <tr>
         <th>Order</th>
         <th>ID</th>
         <th>Status</th>
+        <th>Company</th>
         <th>Title</th>
-        <th>Start Date</th>
+        <th>Dates</th>
         <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($projects as $project)
+    @foreach($positions as $position)
         <tr>
             <td>{{$loop->index+1}}</td>
-            <td>{{$project->id}}</td>
+            <td>{{$position->id}}</td>
             <td>
-                {{Form::checkbox('is_active', true, $project->is_active, [
-                        'data-id'=>$project->id,
+                {{Form::checkbox('is_active', true, $position->is_active, [
+                        'data-id'=>$position->id,
                         'class' => 'switch-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
-                        'data-route' => route('admin.projects.activate', $project)])}}
+                        'data-route' => route('admin.positions.activate', $position)])}}
             </td>
-            <td>{{$project->title}}</td>
-            <td>{{$project->started_at}} - {{$project->finished_at}}</td>
+            <td>{{$position->company}}</td>
+            <td>{{$position->title}}</td>
+            <td>{{$position->start_date}} - {{$position->end_date}}</td>
             <td>
-                @include('backend.projects.includes.actions', $model = $project)
+                @include('backend.positions.includes.actions', $model = $position)
             </td>
         </tr>
     @endforeach
@@ -41,8 +43,9 @@
         <th>Order</th>
         <th>ID</th>
         <th>Status</th>
+        <th>Company</th>
         <th>Title</th>
-        <th>Start Date</th>
+        <th>Dates</th>
         <th>Actions</th>
     </tr>
     </tfoot>
@@ -54,6 +57,6 @@
     {{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>--}}
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script src="{{ mix('js/backend/projects/projects.js') }}"></script>
+    <script src="{{ mix('js/backend/positions/positions.js') }}"></script>
     <script src="{{ mix('js/backend/includes/reorder.js') }}"></script>
 @endpush

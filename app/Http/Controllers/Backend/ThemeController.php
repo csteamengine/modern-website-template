@@ -71,7 +71,9 @@ class ThemeController extends Controller
 
         $this->addFiles($request, $theme);
 
-        return redirect()->route('admin.themes.edit', $theme)->withFlashSuccess("Successfully Created the Theme");
+        return redirect()
+            ->route('admin.themes.edit', $theme)
+            ->withFlashSuccess(__("Successfully Created the Theme"));
     }
 
     /**
@@ -112,7 +114,9 @@ class ThemeController extends Controller
 
         $this->addFiles($request, $theme);
 
-        return redirect()->route('admin.themes.edit', $theme)->withFlashSuccess("Successfully Updated the Theme");
+        return redirect()
+            ->route('admin.themes.edit', $theme)
+            ->withFlashSuccess(__("Successfully Updated the Theme"));
     }
 
     /**
@@ -126,81 +130,60 @@ class ThemeController extends Controller
     {
         $this->themeService->destroy($theme);
 
-        return redirect()->back()->withFlashSuccess(__('The theme was successfully deleted.'));
+        return redirect()
+            ->back()
+            ->withFlashSuccess(__('The theme was successfully deleted.'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function reorder(Request $request)
     {
-        $validatedJSON = $request->validate([
-            'themes' => 'required|JSON',
-        ]);
-
-        $data = json_decode($validatedJSON['themes']);
-
-        foreach ($data as $JSONtheme) {
-            $theme = Theme::find($JSONtheme->theme_id);
-            $theme->order = $JSONtheme->order;
-            if (! $theme->save()) {
-                return response()->json([
-                    'message' => 'Failed to update the theme order!',
-                ], 400);
-            }
-        }
-
-        return response()->json([
-            'message' => "Successfully updated the theme order!",
-        ], 200);
+        return reorderObjects($request, Theme::class);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function reorderMedia(Request $request)
     {
-        $validatedJSON = $request->validate([
-            'media' => 'required|JSON',
-        ]);
-
-        $data = json_decode($validatedJSON['media']);
-
-        Media::setNewOrder($data);
-
-        return response()->json([
-            'message' => "Successfully updated the theme order!",
-        ], 200);
+        return reorderMedia($request);
     }
 
     public function deleteMedia(Request $request, Media $media)
     {
-        if ($media->delete()) {
-            return response()->json([
-                'message' => "Successfully deleted the image!",
-            ], 200);
-        }
-
-        return response()->json([
-            'message' => 'Failed to delete the image.',
-        ], 400);
+        return deleteMedia($request, $media);
     }
 
     /**
      * @param Theme $theme
+     * @throws Throwable
+     *
+     * Can only activate the theme that is clicked because we don't want to have the
+     * situation where a theme is inactive. At worst, when to click the active theme, it just re-activates it.
      * @return mixed
      */
     public function activate(Theme $theme)
     {
         if ($theme) {
-            $theme->is_active = ! $theme->is_active;
+            Theme::where('id', '!=', $theme->id)->update(['is_active' => false]);
 
+            $theme->is_active = true;
             $updateSuccess = $theme->save();
 
             if ($updateSuccess) {
-                return response()->json([
-                    'message' => "Successfully toggled the theme status",
-                ], 200);
+                return redirect()
+                    ->back()
+                    ->withFlashSuccess(__('Successfully activated the theme.'));
             }
         }
 
-        return response()->json([
-            'message' => "Failed To toggle the theme status",
-        ], 400);
+        return redirect()
+            ->back()
+            ->withFlashWarning(__('Failed to activate the theme.'));
     }
 
     /**

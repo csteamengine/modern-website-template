@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LinkController;
+use App\Http\Controllers\Backend\PositionController;
 use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\ThemeController;
 use App\Models\Project;
@@ -17,6 +18,7 @@ Route::resources([
     'projects' => ProjectController::class,
     'themes' => ThemeController::class,
     'links' => LinkController::class,
+    'positions' => PositionController::class,
 ]);
 
 /*
@@ -32,7 +34,7 @@ Route::group(['namespace' => 'Projects', 'prefix' => 'projects', 'as' => 'projec
 
 Route::group(['namespace' => 'Themes', 'prefix' => 'themes', 'as' => 'themes.', 'middleware' => 'admin'], function () {
     Route::post('/reorder', [ThemeController::class, 'reorder'])->name('reorder');
-    Route::patch('{theme}/activate', [ThemeController::class, 'activate'])->name('activate');
+    Route::post('{theme}/activate', [ThemeController::class, 'activate'])->name('activate');
     Route::patch('{theme}/reorder', [ThemeController::class, 'reorderMedia'])->name('reorder-media');
     Route::delete('/delete-media/{media}', [ThemeController::class, 'deleteMedia'])->name('delete-media');
 });
@@ -42,3 +44,9 @@ Route::group(['namespace' => 'Links', 'prefix' => 'links', 'as' => 'links.', 'mi
     Route::patch('{link}/activate', [LinkController::class, 'activate'])->name('activate');
 });
 
+Route::group(['namespace' => 'Positions', 'prefix' => 'positions', 'as' => 'positions.', 'middleware' => 'admin'], function () {
+    Route::post('/reorder', [PositionController::class, 'reorder'])->name('reorder');
+    Route::patch('{position}/activate', [PositionController::class, 'activate'])->name('activate');
+    Route::patch('{position}/reorder', [PositionController::class, 'reorderMedia'])->name('reorder-media');
+    Route::delete('/delete-media/{media}', [PositionController::class, 'deleteMedia'])->name('delete-media');
+});

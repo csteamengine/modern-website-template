@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectsTableSeeder::class);
         $this->call(ThemesTableSeeder::class);
         $this->call(VisitsTableSeeder::class);
+        $this->call(PositionsTableSeeder::class);
 
         Model::reguard();
     }

@@ -71,7 +71,9 @@ class ProjectController extends Controller
 
         $this->addFiles($request, $project);
 
-        return redirect()->route('admin.projects.edit', $project)->withFlashSuccess("Successfully Created the Project");
+        return redirect()
+            ->route('admin.projects.edit', $project)
+            ->withFlashSuccess(__("Successfully Created the Project"));
     }
 
     /**
@@ -111,7 +113,8 @@ class ProjectController extends Controller
 
         $this->addFiles($request, $project);
 
-        return redirect()->route('admin.projects.edit', $project)->withFlashSuccess("Successfully Updated the Project");
+        return redirect()->route('admin.projects.edit', $project)
+            ->withFlashSuccess(__("Successfully Updated the Project"));
     }
 
     /**
@@ -125,58 +128,23 @@ class ProjectController extends Controller
     {
         $this->projectService->destroy($project);
 
-        return redirect()->back()->withFlashSuccess(__('The project was successfully deleted.'));
+        return redirect()->back()
+            ->withFlashSuccess(__('The project was successfully deleted.'));
     }
 
     public function reorder(Request $request)
     {
-        $validatedJSON = $request->validate([
-            'projects' => 'required|JSON',
-        ]);
-
-        $data = json_decode($validatedJSON['projects']);
-
-        foreach ($data as $JSONproject) {
-            $project = Project::find($JSONproject->project_id);
-            $project->order = $JSONproject->order;
-            if (! $project->save()) {
-                return response()->json([
-                    'message' => 'Failed to update the project order!',
-                ], 400);
-            }
-        }
-
-        return response()->json([
-            'message' => "Successfully updated the project order!",
-        ], 200);
+        return reorderObjects($request, Project::class);
     }
 
     public function reorderMedia(Request $request)
     {
-        $validatedJSON = $request->validate([
-            'media' => 'required|JSON',
-        ]);
-
-        $data = json_decode($validatedJSON['media']);
-
-        Media::setNewOrder($data);
-
-        return response()->json([
-            'message' => "Successfully updated the project order!",
-        ], 200);
+        return reorderMedia($request);
     }
 
     public function deleteMedia(Request $request, Media $media)
     {
-        if ($media->delete()) {
-            return response()->json([
-                'message' => "Successfully deleted the image!",
-            ], 200);
-        }
-
-        return response()->json([
-            'message' => 'Failed to delete the image.',
-        ], 400);
+        return deleteMedia($request, $media);
     }
 
     /**
@@ -185,21 +153,7 @@ class ProjectController extends Controller
      */
     public function activate(Project $project)
     {
-        if ($project) {
-            $project->is_active = ! $project->is_active;
-
-            $updateSuccess = $project->save();
-
-            if ($updateSuccess) {
-                return response()->json([
-                    'message' => "Successfully toggled the project status",
-                ], 200);
-            }
-        }
-
-        return response()->json([
-            'message' => "Failed To toggle the project status",
-        ], 400);
+        return activate($project);
     }
 
     /**

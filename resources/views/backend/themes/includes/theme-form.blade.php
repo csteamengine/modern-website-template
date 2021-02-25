@@ -20,7 +20,12 @@
     {!! Form::email('email',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
 
     {!! Form::label('is_active', 'Active'); !!}
-    {!! Form::checkbox('is_active',true, $theme->is_active, ['class' => 'form-control', 'placeholder' => 'Active']); !!}
+    {!! Form::checkbox('is_active', true, $theme->is_active, [
+                    'data-id'=>$theme->id,
+                    'class' => 'status-input',
+                    'data-toggle'=>'toggle',
+                    'data-onstyle' => 'success',
+                    ]) !!}
 
     {!! Form::label('media-label',"Upload Media"); !!}
     {!! Form::file('media[]', ['class' => 'form-control-file', 'multiple' => true]); !!}
@@ -33,6 +38,48 @@
 
     {!! Form::label('media-label',"Upload About Image"); !!}
     {!! Form::file('about_image', ['class' => 'form-control-file', 'multiple' => false]); !!}
+
+    {!! Form::label('primary_color', 'Primary Color'); !!}
+    {!! Form::color('primary_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
+
+    {!! Form::label('secondary_color', 'Secondary Color'); !!}
+    {!! Form::color('secondary_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
+
+    {!! Form::label('background_color', 'Background Color'); !!}
+    {!! Form::color('background_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
+
+
+    {!! Form::label('is_maintenance_mode', 'Maintenance Mode'); !!}
+    {!!Form::checkbox('is_maintenance_mode', true, $theme->is_maintenance_mode, [
+                    'data-id'=>$theme->id,
+                    'class' => 'status-input',
+                    'data-toggle'=>'toggle',
+                    'data-onstyle' => 'success',
+                    ])!!}
+
+    {!! Form::label('contact_active', 'Contact Submission'); !!}
+    {!!Form::checkbox('contact_active', true, $theme->contact_active, [
+                            'data-id'=>$theme->id,
+                            'class' => 'status-input',
+                            'data-toggle'=>'toggle',
+                            'data-onstyle' => 'success',
+                            ])!!}
+
+    {!! Form::label('resume_active', 'Resume Download'); !!}
+    {!!Form::checkbox('resume_active', true, $theme->resume_active, [
+                            'data-id'=>$theme->id,
+                            'class' => 'status-input',
+                            'data-toggle'=>'toggle',
+                            'data-onstyle' => 'success',
+                            ])!!}
+
+    {!! Form::label('background_video_active', 'Background Video'); !!}
+    {!!Form::checkbox('background_video_active', true, $theme->background_video_active, [
+                            'data-id'=>$theme->id,
+                            'class' => 'status-input',
+                            'data-toggle'=>'toggle',
+                            'data-onstyle' => 'success',
+                            ])!!}
 
     <button class="btn btn-sm btn-success m-5" type="submit">{{$actionText}}</button>
 {!! Form::close() !!}

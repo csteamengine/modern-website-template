@@ -4,7 +4,7 @@
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 @endpush
-<table id="themesTable" class="display" style="width:100%">
+<table id="themesTable" class="display reorder-table" style="width:100%">
     <thead>
     <tr>
         <th>Order</th>
@@ -20,12 +20,14 @@
             <td>{{$loop->index+1}}</td>
             <td>{{$theme->id}}</td>
             <td>
+                {!! Form::model($theme, ['route' => ['admin.themes.activate', $theme], 'method' => 'POST', 'files' => false, 'class' => 'form-horizontal']) !!}
                 {{Form::checkbox('is_active', true, $theme->is_active, [
                         'data-id'=>$theme->id,
-                        'class' => 'switch-input',
+                        'class' => 'status-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
-                        'data-route' => route('admin.themes.activate', $theme)])}}
+                        ])}}
+                {{Form::close()}}
             </td>
             <td>{{$theme->title}}</td>
             <td>
@@ -52,4 +54,6 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="{{ mix('js/backend/themes/themes.js') }}"></script>
+    <script src="{{ mix('js/backend/includes/reorder.js') }}"></script>
+
 @endpush
