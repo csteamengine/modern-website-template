@@ -1,8 +1,26 @@
 {!! Form::model($theme, ['route' => [$route, $theme], 'method' => $method, 'files' => true]) !!}
     {!! Form::token(); !!}
 
-    {!! Form::label('title', 'Title'); !!}
-    {!! Form::text('title',null, ['class' => 'form-control', 'placeholder' => 'Theme Title']); !!}
+    <div class="row mb-2">
+        <div class="col col-12 col-sm-2">
+            <div class="form-group">
+                {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
+                <div class="form-control-label">
+                    {!! Form::checkbox('is_active', true, $theme->is_active, [
+                                    'data-id'=>$theme->id,
+                                    'class' => 'status-input',
+                                    'data-toggle'=>'toggle',
+                                    'data-onstyle' => 'success',
+                                    ]) !!}
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-sm-10">
+            {!! Form::label('title', 'Title'); !!}
+            {!! Form::text('title',null, ['class' => 'form-control', 'placeholder' => 'Theme Title']); !!}
+        </div>
+    </div>
+
 
     {!! Form::label('first_name', 'First Name'); !!}
     {!! Form::text('first_name',null, ['class' => 'form-control', 'placeholder' => 'First Name']); !!}
@@ -18,14 +36,6 @@
 
     {!! Form::label('email', 'Contact Email'); !!}
     {!! Form::email('email',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
-
-    {!! Form::label('is_active', 'Active'); !!}
-    {!! Form::checkbox('is_active', true, $theme->is_active, [
-                    'data-id'=>$theme->id,
-                    'class' => 'status-input',
-                    'data-toggle'=>'toggle',
-                    'data-onstyle' => 'success',
-                    ]) !!}
 
     {!! Form::label('media-label',"Upload Media"); !!}
     {!! Form::file('media[]', ['class' => 'form-control-file', 'multiple' => true]); !!}

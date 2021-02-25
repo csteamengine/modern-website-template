@@ -1,8 +1,25 @@
 {!! Form::model($position, ['route' => [$route, $position], 'method' => $method, 'files' => true]) !!}
     {!! Form::token(); !!}
 
-    {!! Form::label('title', 'Title'); !!}
-    {!! Form::text('title',null, ['class' => 'form-control', 'placeholder' => 'Position Title']); !!}
+    <div class="row mb-2">
+        <div class="col col-12 col-sm-2">
+            <div class="form-group">
+                {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
+                <div class="form-control-label">
+                    {!! Form::checkbox('is_active', true, $position->is_active, [
+                        'data-id'=>$position->id,
+                        'class' => 'status-input form-control',
+                        'data-toggle'=>'toggle',
+                        'data-onstyle' => 'success',
+                        ]) !!}
+                </div>
+            </div>
+        </div>
+        <div class="col col-12 col-sm-10">
+            {!! Form::label('title', 'Title'); !!}
+            {!! Form::text('title',null, ['class' => 'form-control', 'placeholder' => 'Position Title']); !!}
+        </div>
+    </div>
 
     {!! Form::label('company', 'Company'); !!}
     {!! Form::text('company',null, ['class' => 'form-control', 'placeholder' => 'Company']); !!}
