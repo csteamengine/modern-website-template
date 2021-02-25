@@ -22,5 +22,5 @@ Route::get('terms', [TermsController::class, 'index'])
             ->push(__('Terms & Conditions'), route('frontend.pages.terms'));
     });
 
-Route::get('projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('projects/', [ProjectController::class, 'index'])->name('projects');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');

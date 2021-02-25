@@ -1,4 +1,3 @@
-
 @push('before-styles')
     <link href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css" rel="stylesheet">
@@ -16,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($project->getMedia('images') as $media)
+    @foreach($theme->getMedia('images') as $media)
         <tr>
             <td>{{$loop->index+1}}</td>
             <td>{{$media->id}}</td>
@@ -32,7 +31,7 @@
             </td>
             <td>{{$media->name}}</td>
             <td>
-                @include('backend.projects.includes.media-actions', $model = $media)
+                @include('backend.themes.includes.media-actions', $model = $media)
             </td>
         </tr>
     @endforeach

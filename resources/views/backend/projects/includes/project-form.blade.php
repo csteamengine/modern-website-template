@@ -25,10 +25,10 @@
     {!! Form::label('finished_at', 'End Date'); !!}
     {!! Form::date('finished_at',null, ['class' => 'form-control', 'placeholder' => 'End Date']); !!}
 
-    @include('backend.projects.includes.media', ['project' => $project])
 
-    {!! Form::submit($actionText, ['class' => 'form-control']); !!}
+    {!! Form::label('media-label',"Upload Media"); !!}
+    {!! Form::file('media[]', ['class' => 'form-control-file', 'multiple' => true]); !!}
+
+    {!! Form::submit($actionText, ['class' => 'form-control btn btn-success']); !!}
 {!! Form::close() !!}
 
-<input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.projects.reorder-media', $project)}}">
-<input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">

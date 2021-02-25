@@ -19,8 +19,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        //TODO update authorize
-        return true;
+        return $this->user()->isAdmin();
     }
 
     /**
@@ -30,17 +29,16 @@ class StoreProjectRequest extends FormRequest
      */
     public function rules()
     {
-        //TODO update rules
         return [
             'title' => 'required|string',
-            'short_description' => 'sometimes|string',
-            'description' => 'sometimes|string',
-            'page_content' => 'sometimes|string',
-            'external_url' => 'sometimes|url',
+            'short_description' => 'nullable|string',
+            'description' => 'nullable|string',
+            'page_content' => 'nullable|string',
+            'external_url' => 'nullable|url',
             'is_active' => 'sometimes|boolean',
-            'started_at' => 'sometimes|date',
-            'finished_at' => 'sometimes|date|after_or_equal:started_at',
-            'media' => 'nullable|image',
+            'started_at' => 'nullable|date',
+            'finished_at' => 'nullable|date|after_or_equal:started_at',
+            'media.*' => 'nullable|image',
         ];
     }
 

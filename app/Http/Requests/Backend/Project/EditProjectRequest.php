@@ -17,8 +17,7 @@ class EditProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        //TODO update authorize
-        return true;
+        return $this->user()->isAdmin();
     }
 
     /**

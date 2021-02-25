@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Role;
+namespace App\Http\Requests\Backend\Theme;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
@@ -17,7 +17,7 @@ class DeleteThemeRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! $this->role->isAdmin();
+        return $this->user()->isAdmin();
     }
 
     /**

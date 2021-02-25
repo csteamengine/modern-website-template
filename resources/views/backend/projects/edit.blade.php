@@ -20,11 +20,14 @@
 
         <x-slot name="body">
             @include('backend.projects.includes.project-form', ['project' => $project, 'action' => 'update', 'actionText' => 'Update Project', 'method' => 'PUT', 'route' => 'admin.projects.update'])
+            @include('backend.projects.includes.media', ['project' => $project])
+            <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.projects.reorder-media', $project)}}">
+            <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">
         </x-slot>
     </x-backend.card>
 
 @endsection
 
 @push('after-scripts')
-    <script src="{{mix('js/backend/projects/project.js')}}"></script>
+    <script src="{{mix('js/backend/includes/media.js')}}"></script>
 @endpush

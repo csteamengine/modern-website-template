@@ -36,7 +36,7 @@ class ProjectController extends Controller
         //List all the projects
         $projects = Project::all();
 
-        return view('backend.projects.index')->withProjects($projects);
+        return view('frontend.projects.index')->withProjects($projects);
     }
 
     /**

@@ -17,5 +17,5 @@
 @endsection
 
 {{--@push('after-scripts')--}}
-{{--    {!! script(mix('js/backend/projects/project.js')) !!}--}}
+{{--    {!! script(mix('js/backend/includes/media.js')) !!}--}}
 {{--@endpush--}}

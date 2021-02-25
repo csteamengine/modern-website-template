@@ -12,18 +12,18 @@ use Illuminate\Support\Facades\DB;
 use Throwable;
 
 /**
- * Class RoleService.
+ * Class ProjectService.
  */
 class ProjectService extends BaseService
 {
     /**
-     * RoleService constructor.
+     * ProjectService constructor.
      *
-     * @param Project $role
+     * @param Project $project
      */
-    public function __construct(Project $role)
+    public function __construct(Project $project)
     {
-        $this->model = $role;
+        $this->model = $project;
     }
 
     /**
@@ -50,8 +50,7 @@ class ProjectService extends BaseService
             ]);
         } catch (Exception $e) {
             DB::rollBack();
-            dump($e);
-            exit;
+
             throw new GeneralException(__('There was a problem creating the project.'));
         }
 

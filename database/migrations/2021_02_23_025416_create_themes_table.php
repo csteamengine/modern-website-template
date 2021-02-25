@@ -17,9 +17,14 @@ class CreateThemesTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email');
             $table->string('title');
             $table->text('description')->nullable();
             $table->longText('page_content')->nullable();
+            $table->string('resume_file_id')->nullable();
+            $table->integer('background_image_id')->nullable();
+            $table->integer('about_image_id')->nullable();
+            $table->integer('order')->default(0);
             $table->boolean('is_active')->default(true);
             $table->softDeletes();
             $table->timestamps();

@@ -19,8 +19,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        //TODO determine if the user is admin
-        return true;
+        return $this->user()->isAdmin();
     }
 
     /**

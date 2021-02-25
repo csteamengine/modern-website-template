@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Role;
+namespace App\Http\Requests\Backend\Theme;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -19,7 +19,7 @@ class UpdateThemeRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! $this->role->isAdmin();
+        return $this->user()->isAdmin();
     }
 
     /**
@@ -30,7 +30,17 @@ class UpdateThemeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'description' => 'sometimes|string',
+            'page_content' => 'nullable|string',
+            'email' => 'required|email',
+            'is_active' => 'sometimes|boolean',
+            'media.*' => 'nullable|image',
+            'resume' => 'nullable|file',
+            'background_image' => 'nullable|image',
+            'about_image' => 'nullable|image',
         ];
     }
 
