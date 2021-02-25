@@ -24,6 +24,7 @@
             <td>
                 {{Form::checkbox('is_active', true, $position->is_active, [
                         'data-id'=>$position->id,
+                        'data-size'=>"large",
                         'class' => 'switch-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',

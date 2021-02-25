@@ -8,6 +8,7 @@
                 <div class="form-control-label">
                     {!! Form::checkbox('is_active', true, $position->is_active, [
                         'data-id'=>$position->id,
+                        'data-size'=>"large",
                         'class' => 'status-input form-control',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
@@ -39,6 +40,7 @@
     {!! Form::label('is_active', 'Active'); !!}
     {!! Form::checkbox('is_active', true, $position->is_active, [
                     'data-id'=>$position->id,
+                    'data-size'=>"large",
                     'class' => 'status-input',
                     'data-toggle'=>'toggle',
                     'data-onstyle' => 'success',

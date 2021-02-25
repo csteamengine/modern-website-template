@@ -2,11 +2,6 @@
 
 @section('title', __('labels.backend.links.management') . ' | ' . __('labels.backend.links.create'))
 
-{{--@push('after-styles')--}}
-{{--    {!! style('/css/backend/link.css') !!}--}}
-{{--    {!! style('/css/backend/summernote.css') !!}--}}
-{{--@endpush--}}
-
 @push('before-styles')
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endpush

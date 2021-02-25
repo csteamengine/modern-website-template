@@ -23,6 +23,7 @@
             <td>
                 {{Form::checkbox('is_active', true, $project->is_active, [
                         'data-id'=>$project->id,
+                        'data-size'=>"large",
                         'class' => 'switch-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',

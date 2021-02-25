@@ -23,6 +23,7 @@
                 {!! Form::model($theme, ['route' => ['admin.themes.activate', $theme], 'method' => 'POST', 'files' => false, 'class' => 'form-horizontal']) !!}
                 {{Form::checkbox('is_active', true, $theme->is_active, [
                         'data-id'=>$theme->id,
+                        'data-size'=>"large",
                         'class' => 'status-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',

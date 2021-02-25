@@ -2,13 +2,8 @@
 
 @section('title', __('labels.backend.links.management') . ' | ' . __('labels.backend.links.create'))
 
-{{--@push('after-styles')--}}
-{{--    {!! style('/css/backend/link.css') !!}--}}
-{{--    {!! style('/css/backend/summernote.css') !!}--}}
-{{--@endpush--}}
-
 @push('before-scripts')
-    {{--    <script src="/js/vendor.js"></script>--}}
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endpush
 
 
@@ -27,5 +22,6 @@
 @endsection
 
 @push('after-scripts')
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="{{mix('js/backend/links/link.js')}}"></script>
 @endpush

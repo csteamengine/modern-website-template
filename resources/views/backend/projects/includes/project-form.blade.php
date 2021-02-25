@@ -10,6 +10,7 @@
                 <div class="form-control-label">
                     {!! Form::checkbox('is_active', true, $project->is_active, [
                         'data-id'=>$project->id,
+                        'data-size'=>"large",
                         'class' => 'status-input form-control',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
