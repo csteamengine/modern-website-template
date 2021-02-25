@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49a5f60ca6d4003e000a7898c9100676",
+    "content-hash": "43084f1a2cd2845bdc4c2396510a62ca",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -251,6 +251,61 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.3"
             },
             "time": "2020-10-30T02:02:47+00:00"
+        },
+        {
+            "name": "bensquire/php-color-extractor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bensquire/php-color-extractor.git",
+                "reference": "f313585be9bf9578e7f5409358d8b796fd3ae44f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bensquire/php-color-extractor/zipball/f313585be9bf9578e7f5409358d8b796fd3ae44f",
+                "reference": "f313585be9bf9578e7f5409358d8b796fd3ae44f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-hash": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPColorExtractor": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Squire",
+                    "email": "b.squire@gmail.com",
+                    "homepage": "https://github.com/bensquire/php-color-extractor"
+                }
+            ],
+            "description": "A simple class to extract the primary colours from an image.",
+            "homepage": "https://github.com/bensquire/php-color-extractor",
+            "keywords": [
+                "color",
+                "colour",
+                "extract",
+                "image",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/bensquire/php-color-extractor/issues",
+                "source": "https://github.com/bensquire/php-color-extractor/tree/master",
+                "wiki": "https://github.com/bensquire/php-color-extractor/wiki"
+            },
+            "time": "2016-03-04T23:57:28+00:00"
         },
         {
             "name": "brick/math",
@@ -12510,6 +12565,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "bensquire/php-color-extractor": 20,
         "darkghosthunter/laraguard": 20,
         "roave/security-advisories": 20
     },

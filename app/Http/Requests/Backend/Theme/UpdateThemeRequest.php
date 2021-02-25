@@ -45,9 +45,9 @@ class UpdateThemeRequest extends FormRequest
             'contact_active' => 'sometimes|boolean',
             'resume_active' => 'sometimes|boolean',
             'background_video_active' => 'sometimes|boolean',
-            'primary_color' => '#FDB716',
-            'secondary_color' => '#0099cc',
-            'background_color' => '#004C4C',
+            'primary_color' => 'nullable|string',
+            'secondary_color' => 'nullable|string',
+            'background_color' => 'nullable|string',
         ];
     }
 

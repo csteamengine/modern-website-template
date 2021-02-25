@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use PHPColorExtractor\PHPColorExtractor;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -166,7 +167,13 @@ class ProjectController extends Controller
     {
         if ($request->hasFile('media')) {
             foreach ($request->file('media') as $image) {
-                $project->addMedia($image)->toMediaCollection('images');
+                $extractor = new PHPColorExtractor();
+                $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
+                $palette = $extractor->extractPalette();
+
+                $project->addMedia($image)
+                    ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                    ->toMediaCollection('images');
             }
         }
     }

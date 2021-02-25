@@ -45,6 +45,9 @@ class StoreThemeRequest extends FormRequest
             'contact_active' => 'sometimes|boolean',
             'resume_active' => 'sometimes|boolean',
             'background_video_active' => 'sometimes|boolean',
+            'primary_color' => 'nullable|string',
+            'secondary_color' => 'nullable|string',
+            'background_color' => 'nullable|string',
         ];
     }
 

@@ -18,6 +18,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 //use PHPColorExtractor\PHPColorExtractor;
 use Illuminate\View\View;
+use PHPColorExtractor\PHPColorExtractor;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Throwable;
@@ -138,8 +139,13 @@ class LinkController extends Controller
     public function addFiles(Request $request, Link $link)
     {
         if ($request->hasFile('image')) {
+            $extractor = new PHPColorExtractor();
+            $extractor->setImage($request->file('image'))->setTotalColors(5)->setGranularity(10);
+            $palette = $extractor->extractPalette();
+
             $link->addMedia($request->file('image'))
-                ->toMediaCollection('images');
+                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                ->toMediaCollection('image');
         }
     }
 

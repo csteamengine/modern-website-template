@@ -11,6 +11,7 @@ use App\Models\Position;
 use App\Services\PositionService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use PHPColorExtractor\PHPColorExtractor;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -181,7 +182,13 @@ class PositionController extends Controller
     {
         if ($request->hasFile('media')) {
             foreach ($request->file('media') as $image) {
-                $position->addMedia($image)->toMediaCollection('images');
+                $extractor = new PHPColorExtractor();
+                $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
+                $palette = $extractor->extractPalette();
+
+                $position->addMedia($image)
+                    ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                    ->toMediaCollection('images');
             }
         }
     }

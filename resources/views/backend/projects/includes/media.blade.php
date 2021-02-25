@@ -11,6 +11,7 @@
         <th>ID</th>
         <th>Image</th>
         <th>Filename</th>
+        <th>Color</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -30,6 +31,7 @@
                      title="<img src='{{$media->getUrl()}}' width='100%' />">
             </td>
             <td>{{$media->name}}</td>
+            <td>{{$media->getCustomProperty('color')}}</td>
             <td>
                 @include('backend.projects.includes.media-actions', $model = $media)
             </td>

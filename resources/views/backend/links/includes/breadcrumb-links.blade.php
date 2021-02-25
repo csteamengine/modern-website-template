@@ -1,5 +1,5 @@
-<x-utils.link
-    class="btn btn-success float-right btn-lg pl-4"
-    :href="route('admin.links.create')"
-    icon="c-sidebar-nav-icon cil-plus"
-    :text="__('Add Link')" />
+<a href="{{route('admin.links.create')}}">
+    <button type="button" class="btn btn-success">
+        <span class="cil-plus btn-icon"></span>
+    </button>
+</a>

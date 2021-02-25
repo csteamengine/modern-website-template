@@ -97,6 +97,8 @@ class ThemeService extends BaseService
                 'background_color' => $data['background_color'],
             ]);
         } catch (Exception $e) {
+            dump($e);
+            exit;
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem updating the Theme.'));

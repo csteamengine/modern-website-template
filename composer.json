@@ -10,7 +10,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "arcanedev/log-viewer": "8.x",
+        "bensquire/php-color-extractor": "dev-master",
         "darkghosthunter/laraguard": "dev-master",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -29,8 +31,7 @@
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^3.11",
-        "tabuna/breadcrumbs": "^2.2",
-      "ext-json": "*"
+        "tabuna/breadcrumbs": "^2.2"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

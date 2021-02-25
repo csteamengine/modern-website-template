@@ -36,5 +36,11 @@ class Theme extends Model implements HasMedia
         'contact_active',
         'resume_active',
         'background_video_active',
+        'background_image_id',
+        'resume_file_id',
+        'about_image_id',
+        'primary_color',
+        'secondary_color',
+        'background_color',
     ];
 }

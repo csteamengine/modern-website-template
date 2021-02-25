@@ -11,6 +11,7 @@ use App\Models\Theme;
 use App\Services\ThemeService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use PHPColorExtractor\PHPColorExtractor;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -196,22 +197,46 @@ class ThemeController extends Controller
     {
         if ($request->hasFile('media')) {
             foreach ($request->file('media') as $image) {
-                $theme->addMedia($image)->toMediaCollection('images');
+                $extractor = new PHPColorExtractor();
+                $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
+                $palette = $extractor->extractPalette();
+
+                $theme->addMedia($image)
+                    ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                    ->toMediaCollection('images');
             }
         }
 
         if ($request->hasFile('background_image')) {
-            $backgroundImage = $theme->addMedia($request->file('background_image'))->toMediaCollection('about_images');
+            $extractor = new PHPColorExtractor();
+            $extractor->setImage($request->file('background_image'))->setTotalColors(5)->setGranularity(10);
+            $palette = $extractor->extractPalette();
+
+            $backgroundImage = $theme->addMedia($request->file('background_image'))
+                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                ->toMediaCollection('background_images');
             $theme->background_image_id = $backgroundImage->id;
         }
 
         if ($request->hasFile('about_image')) {
-            $aboutImage = $theme->addMedia($request->file('about_image'))->toMediaCollection('about_images');
+            $extractor = new PHPColorExtractor();
+            $extractor->setImage($request->file('about_image'))->setTotalColors(5)->setGranularity(10);
+            $palette = $extractor->extractPalette();
+
+            $aboutImage = $theme->addMedia($request->file('about_image'))
+                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                ->toMediaCollection('about_images');
             $theme->about_image_id = $aboutImage->id;
         }
 
         if ($request->hasFile('resume')) {
-            $resume = $theme->addMedia($request->file('resume'))->toMediaCollection('resumes');
+            $extractor = new PHPColorExtractor();
+            $extractor->setImage($request->file('resume'))->setTotalColors(5)->setGranularity(10);
+            $palette = $extractor->extractPalette();
+
+            $resume = $theme->addMedia($request->file('resume'))
+                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                ->toMediaCollection('resumes');
             $theme->resume_file_id = $resume->id;
         }
 

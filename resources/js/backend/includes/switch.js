@@ -1,4 +1,3 @@
-import "./alerts";
 $(document).ready(function() {
     $('.c-switch-input').change(function() {
         try {
