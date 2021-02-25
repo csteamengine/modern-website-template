@@ -2,6 +2,10 @@
 
 @section('title', __('Project Management'))
 
+@section('breadcrumb-links')
+    @include('backend.projects.includes.breadcrumb-links')
+@endsection
+
 @section('content')
 
     <x-backend.card>

@@ -33,6 +33,14 @@
                 icon="c-sidebar-nav-icon cil-paint-bucket"
                 :text="__('Themes')" />
         </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.links.index')"
+                :active="activeClass(Route::is('admin.links.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-external-link"
+                :text="__('Links')" />
+        </li>
 
         @if (
             $logged_in_user->hasAllAccess() ||

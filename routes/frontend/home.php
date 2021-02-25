@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\LinkController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\Frontend\TermsController;
@@ -24,3 +25,5 @@ Route::get('terms', [TermsController::class, 'index'])
 
 Route::get('projects/', [ProjectController::class, 'index'])->name('projects');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('links', [LinkController::class, 'index'])->name('links');
+Route::get('links/{link}', [LinkController::class, 'show'])->name('links.show');

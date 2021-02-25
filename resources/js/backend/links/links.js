@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var table = $('#mediaTable').DataTable( {
+    var table = $('#sortableDataTable').DataTable( {
         rowReorder: {
             selector: 'td:first-child'
         },
@@ -7,23 +7,21 @@ $(document).ready(function() {
             { targets: 1, visible: false }
         ]
     } );
-    $('.media-delete-button').on('click',function(){
+
+    $('.switch-input').change(function() {
         try {
-            var route = $(this).data('action');
+            var route = $(this).data('route');
             var csrf_token = $('#csrfValue').val();
-            var button = $(this);
             $.ajax({
                 /* the route pointing to the post function */
                 url: route,
-                type: 'DELETE',
+                type: 'PATCH',
                 /* send the csrf-token and the input to the controller */
-                data: {_token: csrf_token, media: $(this).data('id')},
+                data: {_token: csrf_token, projects: $(this).data('id')},
                 dataType: 'JSON',
                 /* remind that 'data' is the response of the AjaxController */
                 success: function (data) {
-                    table.row(button.parents('tr') ).remove().draw();
                     successAlert(data);
-
                 },
                 error: function (err) {
                     failureAlert(err);
@@ -36,11 +34,12 @@ $(document).ready(function() {
 
     table.on('row-reordered', function (e, diff, edit) {
         table.one('draw', function () {
-            var json = '[';
-            var length = table.rows().data().length;
 
+            var json = '[';
+
+            var length = table.rows().data().length;
             table.rows().data().each(function (element, index) {
-                json += element[1];
+                json += '{"link_id": ' + element[1] + ', "order": ' + element[0] + '}';
                 if (index !== (length - 1)) {
                     json += ",";
                 }
@@ -53,10 +52,10 @@ $(document).ready(function() {
                 var csrf_token = $('#csrfValue').val();
                 $.ajax({
                     /* the route pointing to the post function */
-                    url: route,
-                    type: 'PATCH',
+                    url: 'http://homestead.reagan/admin/links/reorder',
+                    type: 'POST',
                     /* send the csrf-token and the input to the controller */
-                    data: {_token: csrf_token, media: json},
+                    data: {_token: csrf_token, links: json},
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {

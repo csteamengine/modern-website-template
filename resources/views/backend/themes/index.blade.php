@@ -2,6 +2,10 @@
 
 @section('title', __('Theme Management'))
 
+@section('breadcrumb-links')
+    @include('backend.themes.includes.breadcrumb-links')
+@endsection
+
 @section('content')
 
     <x-backend.card>

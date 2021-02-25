@@ -82,8 +82,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        dump($project);
-        exit;
+        return redirect()->route('backend.dashboard');
     }
 
     /**

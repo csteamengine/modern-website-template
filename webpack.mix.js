@@ -19,16 +19,21 @@ mix.setPublicPath('public')
     .js('resources/js/backend/projects/projects.js', 'js/backend/projects/projects.js')
     .js('resources/js/backend/themes/themes.js', 'js/backend/themes/themes.js')
     .js('resources/js/backend/includes/media.js', 'js/backend/includes/media.js')
+    .js('resources/js/backend/links/links.js', 'js/backend/links/links.js')
+    .js('resources/js/backend/links/link.js', 'js/backend/links/link.js')
+    .js('resources/js/backend/links/show.js', 'js/backend/links/show.js')
     .js('resources/js/frontend/app.js', 'js/frontend.js')
     .js('resources/js/backend/app.js', 'js/backend.js')
     .extract([
         'alpinejs',
         'jquery',
+        'chart.js',
         'bootstrap',
         'popper.js',
         'axios',
         'sweetalert2',
-        'lodash'
+        'summernote',
+        'lodash',
     ])
     .sourceMaps();
 
