@@ -4,59 +4,75 @@
     <div class="row mb-2">
         <div class="col col-3">
             {!! Form::label('is_maintenance_mode', 'Maintenance Mode'); !!}
-            {!!Form::checkbox('is_maintenance_mode', true, $theme->is_maintenance_mode, [
-                            'data-id'=>$theme->id,
-                            'data-size'=>"large",
-                            'class' => 'status-input',
-                            'data-toggle'=>'toggle',
-                            'data-onstyle' => 'success',
-                            ])!!}
+            <div class="form-control-label">
+                <label class="c-switch c-switch-success">
+                    {!! Form::checkbox('is_maintenance_mode', true, $theme->is_maintenance_mode, [
+                        'data-id'=>$theme->id,
+                        'class' => 'status-input c-switch-input',
+                        'data-toggle'=>'toggle',
+                        'data-onstyle' => 'success',
+                        ]) !!}
+                    <span class="c-switch-slider"></span>
+                </label>
+            </div>
         </div>
         <div class="col col-3">
             {!! Form::label('contact_active', 'Contact Submission'); !!}
-            {!!Form::checkbox('contact_active', true, $theme->contact_active, [
-                            'data-id'=>$theme->id,
-                            'data-size'=>"large",
-                            'class' => 'status-input',
-                            'data-toggle'=>'toggle',
-                            'data-onstyle' => 'success',
-                            ])!!}
+            <div class="form-control-label">
+                <label class="c-switch c-switch-success">
+                    {!! Form::checkbox('contact_active', true, $theme->contact_active, [
+                        'data-id'=>$theme->id,
+                        'class' => 'status-input c-switch-input',
+                        'data-toggle'=>'toggle',
+                        'data-onstyle' => 'success',
+                        ]) !!}
+                    <span class="c-switch-slider"></span>
+                </label>
+            </div>
         </div>
         <div class="col col-3">
             {!! Form::label('resume_active', 'Resume Download'); !!}
-            {!!Form::checkbox('resume_active', true, $theme->resume_active, [
-                            'data-id'=>$theme->id,
-                            'data-size'=>"large",
-                            'class' => 'status-input',
-                            'data-toggle'=>'toggle',
-                            'data-onstyle' => 'success',
-                            ])!!}
+            <div class="form-control-label">
+                <label class="c-switch c-switch-success">
+                    {!! Form::checkbox('resume_active', true, $theme->resume_active, [
+                        'data-id'=>$theme->id,
+                        'class' => 'status-input c-switch-input',
+                        'data-toggle'=>'toggle',
+                        'data-onstyle' => 'success',
+                        ]) !!}
+                    <span class="c-switch-slider"></span>
+                </label>
+            </div>
         </div>
         <div class="col col-3">
             {!! Form::label('background_video_active', 'Background Video'); !!}
-            {!!Form::checkbox('background_video_active', true, $theme->background_video_active, [
-                            'data-id'=>$theme->id,
-                            'data-size'=>"large",
-                            'class' => 'status-input',
-                            'data-toggle'=>'toggle',
-                            'data-onstyle' => 'success',
-                            ])!!}
+            <div class="form-control-label">
+                <label class="c-switch c-switch-success">
+                    {!! Form::checkbox('background_video_active', true, $theme->background_video_active, [
+                        'data-id'=>$theme->id,
+                        'class' => 'status-input c-switch-input',
+                        'data-toggle'=>'toggle',
+                        'data-onstyle' => 'success',
+                        ]) !!}
+                    <span class="c-switch-slider"></span>
+                </label>
+            </div>
         </div>
     </div>
 
     <div class="row mb-2">
         <div class="col col-12 col-sm-2">
-            <div class="form-group">
-                {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
-                <div class="form-control-label checkbox">
+            {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
+            <div class="form-control-label">
+                <label class="c-switch c-switch-success">
                     {!! Form::checkbox('is_active', true, $theme->is_active, [
-                            'data-id'=>$theme->id,
-                            'data-size'=>"large",
-                            'class' => 'status-input',
-                            'data-toggle'=>'toggle',
-                            'data-onstyle' => 'success',
-                            ]) !!}
-                </div>
+                        'data-id'=>$theme->id,
+                        'class' => 'status-input c-switch-input',
+                        'data-toggle'=>'toggle',
+                        'data-onstyle' => 'success',
+                        ]) !!}
+                    <span class="c-switch-slider"></span>
+                </label>
             </div>
         </div>
         <div class="col col-12 col-sm-10">

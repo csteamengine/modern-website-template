@@ -5,17 +5,18 @@
 
     <div class="row mb-2">
         <div class="col col-12 col-sm-2">
-            <div class="form-group">
-                {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
-                <div class="form-control-label">
+            {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
+            <div class="form-control-label">
+                <label class="c-switch c-switch-success">
                     {!! Form::checkbox('is_active', true, $project->is_active, [
                         'data-id'=>$project->id,
                         'data-size'=>"large",
-                        'class' => 'status-input form-control',
+                        'class' => 'status-input c-switch-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
                         ]) !!}
-                </div>
+                    <span class="c-switch-slider"></span>
+                </label>
             </div>
         </div>
         <div class="col col-12 col-sm-10">

@@ -3,7 +3,6 @@
 @section('title', __('labels.backend.positions.management') . ' | ' . __('labels.backend.positions.create'))
 
 @push('before-styles')
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endpush
 
 @push('before-scripts')
@@ -23,6 +22,5 @@
 @endsection
 
 @push('after-scripts')
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 @endpush
 

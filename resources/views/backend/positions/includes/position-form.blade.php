@@ -4,15 +4,17 @@
     <div class="row mb-2">
         <div class="col col-12 col-sm-2">
             <div class="form-group">
-                {!! Form::label('is_active', 'Active', ['class' => 'form-control-label']); !!}
+                {!! Form::label('is_active', 'Active'); !!}
                 <div class="form-control-label">
-                    {!! Form::checkbox('is_active', true, $position->is_active, [
-                        'data-id'=>$position->id,
-                        'data-size'=>"large",
-                        'class' => 'status-input form-control',
-                        'data-toggle'=>'toggle',
-                        'data-onstyle' => 'success',
-                        ]) !!}
+                    <label class="c-switch c-switch-success">
+                        {!! Form::checkbox('is_active', true, $position->is_active, [
+                            'data-id'=>$position->id,
+                            'class' => 'status-input c-switch-input',
+                            'data-toggle'=>'toggle',
+                            'data-onstyle' => 'success',
+                            ]) !!}
+                        <span class="c-switch-slider"></span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -37,14 +39,6 @@
     {!! Form::label('external_url', 'External URL'); !!}
     {!! Form::url('external_url',null, ['class' => 'form-control', 'placeholder' => 'External URL']); !!}
 
-    {!! Form::label('is_active', 'Active'); !!}
-    {!! Form::checkbox('is_active', true, $position->is_active, [
-                    'data-id'=>$position->id,
-                    'data-size'=>"large",
-                    'class' => 'status-input',
-                    'data-toggle'=>'toggle',
-                    'data-onstyle' => 'success',
-                    ]) !!}
 
     {!! Form::label('start_date', 'Start Date'); !!}
     {!! Form::date('start_date',null, ['class' => 'form-control', 'placeholder' => 'Start Date']); !!}

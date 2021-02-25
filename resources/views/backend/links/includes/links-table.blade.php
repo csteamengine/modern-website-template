@@ -16,13 +16,16 @@
             <td>{{$loop->index+1}}</td>
             <td>{{$link->id}}</td>
             <td>
-                {{Form::checkbox('is_active', true, $link->is_active, [
+                <label class="c-switch c-switch-success">
+                    {!! Form::checkbox('is_active', true, $link->is_active, [
                         'data-id'=>$link->id,
-                        'data-size'=>"large",
-                        'class' => 'switch-input',
+                        'class' => 'status-input c-switch-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
-                        'data-route' => route('admin.links.activate', $link)])}}
+                        'data-route' => route('admin.links.activate', $link)
+                        ]) !!}
+                    <span class="c-switch-slider"></span>
+                </label>
             </td>
             <td>
                 @if($link->image() != null)
