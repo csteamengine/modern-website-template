@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use App\Domains\Auth\Events\Role\ProjectUpdated;
+use App\Domains\Auth\Events\Role\RoleUpdated;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
@@ -56,7 +56,7 @@ class UpdateRoleTest extends TestCase
             'role_id' => Role::whereName('new name')->first()->id,
         ]);
 
-        Event::assertDispatched(ProjectUpdated::class);
+        Event::assertDispatched(RoleUpdated::class);
     }
 
     /** @test */

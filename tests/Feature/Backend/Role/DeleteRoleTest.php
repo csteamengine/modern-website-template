@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use App\Domains\Auth\Events\Role\ProjectDeleted;
+use App\Domains\Auth\Events\Role\RoleDeleted;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,7 +31,7 @@ class DeleteRoleTest extends TestCase
 
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
 
-        Event::assertDispatched(ProjectDeleted::class);
+        Event::assertDispatched(RoleDeleted::class);
     }
 
     /** @test */
