@@ -37,6 +37,8 @@ mix.setPublicPath('public')
         'axios',
         'sweetalert2',
         'bs4-summernote',
+        'datatables.net-bs4',
+        'datatables.net-rowreorder-bs4',
         'lodash',
     ])
     .sourceMaps();

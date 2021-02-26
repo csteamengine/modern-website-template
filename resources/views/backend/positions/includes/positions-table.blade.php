@@ -1,8 +1,6 @@
 @push('before-styles')
-    <link href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css" rel="stylesheet">
 @endpush
-<table id="positionsTable" class="display reorder-table" style="width:100%">
+<table id="positionsTable" class="display reorder-table table table-striped table-bordered" style="width:100%">
     <thead>
     <tr>
         <th>Order</th>
@@ -54,12 +52,7 @@
 </table>
 
 @push('after-scripts')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    {{--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>--}}
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
     <script src="{{ mix('js/backend/positions/positions.js') }}"></script>
     <script src="{{ mix('js/backend/includes/reorder.js') }}"></script>
     <script src="{{ mix('js/backend/includes/switch.js') }}"></script>
-
 @endpush

@@ -12,57 +12,14 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 /* remind that 'data' is the response of the AjaxController */
                 success: function (data) {
-                    successAlert(data);
+                    $.fn.successAlert(data);
                 },
                 error: function (err) {
-                    failureAlert(err);
+                    $.fn.failureAlert(err);
                 }
             });
         } catch (err) {
-            errorAlert(err);
+            $.fn.errorAlert(err);
         }
     })
 });
-
-function successAlert(data){
-    var html = '<div class="alert alert-success" role="alert">' +
-        '        <button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '            <span aria-hidden="true">&times;</span>' +
-        '        </button>' +
-        '' + data['message'] +
-        '    </div>';
-
-    $('#mainContainer').prepend(html);
-
-    window.setTimeout(function () {
-        $(".alert").fadeTo(500, 0).slideUp(500, function () {
-            $(this).remove();
-        });
-    }, 4000);
-}
-
-function failureAlert(err){
-    var html = '<div class="alert alert-danger" role="alert">' +
-        '        <button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '            <span aria-hidden="true">&times;</span>' +
-        '        </button>' +
-        '' + err['responseJSON']['message'] +
-        '    </div>';
-    $('#mainContainer').prepend(html);
-
-    window.setTimeout(function () {
-        $(".alert").fadeTo(500, 0).slideUp(500, function () {
-            $(this).remove();
-        });
-    }, 4000);
-}
-
-function errorAlert(err){
-    var html = '<div class="alert alert-danger" role="alert">' +
-        '        <button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '            <span aria-hidden="true">&times;</span>' +
-        '        </button>' +
-        ' Oops! Something went wrong on our end.' +
-        '    </div>';
-    $('#mainContainer').prepend(html);
-}

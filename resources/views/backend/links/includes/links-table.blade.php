@@ -1,4 +1,4 @@
-<table id="sortableDataTable" class="display reorder-table" style="width:100%">
+<table id="sortableDataTable" class="display reorder-table table table-striped table-bordered" style="width:100%">
     <thead>
     <tr>
         <th>Order</th>
