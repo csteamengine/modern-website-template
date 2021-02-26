@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\Frontend\LinkController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LinkController;
+use App\Http\Controllers\Frontend\PositionController;
 use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\Frontend\TermsController;
 use Tabuna\Breadcrumbs\Trail;
@@ -29,3 +31,8 @@ Route::get('links', [LinkController::class, 'index'])->name('links');
 Route::get('links/{link}', [LinkController::class, 'show'])->name('links.show');
 Route::get('positions', [LinkController::class, 'index'])->name('positions');
 Route::get('positions/{position}', [LinkController::class, 'show'])->name('positions.show');
+Route::get('career', [PositionController::class, 'index'])->name('career');
+Route::get('about', [HomeController::class, 'about'])->name('about');
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('contact', [ContactController::class, 'send'])->name('send');
+

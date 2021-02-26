@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', __($project->title))
+@section('title', __('Position'))
 
 @push('before-styles')
 
