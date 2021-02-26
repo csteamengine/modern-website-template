@@ -2,6 +2,12 @@
 
 use App\Http\Controllers\LocaleController;
 
+if (env('APP_STATUS') == 'parked') {
+    Route::get('{any}', function () {
+        return view('frontend.coming_soon');
+    })->where('any', '.*');
+}
+
 /*
  * Global Routes
  *

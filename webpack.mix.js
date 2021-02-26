@@ -20,6 +20,7 @@ mix.setPublicPath('public')
     .js('resources/js/backend/positions/positions.js', 'js/backend/positions/positions.js')
     .js('resources/js/backend/themes/themes.js', 'js/backend/themes/themes.js')
     .js('resources/js/backend/includes/media.js', 'js/backend/includes/media.js')
+    .js('resources/js/backend/includes/forms.js', 'js/backend/includes/forms.js')
     .js('resources/js/backend/includes/reorder.js', 'js/backend/includes/reorder.js')
     .js('resources/js/backend/includes/switch.js', 'js/backend/includes/switch.js')
     .js('resources/js/backend/links/links.js', 'js/backend/links/links.js')
@@ -35,7 +36,7 @@ mix.setPublicPath('public')
         'popper.js',
         'axios',
         'sweetalert2',
-        'summernote',
+        'bs4-summernote',
         'lodash',
     ])
     .sourceMaps();

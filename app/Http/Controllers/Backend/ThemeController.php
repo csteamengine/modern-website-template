@@ -170,10 +170,7 @@ class ThemeController extends Controller
     public function activate(Theme $theme)
     {
         if ($theme) {
-            Theme::where('id', '!=', $theme->id)->update(['is_active' => false]);
-
-            $theme->is_active = true;
-            $updateSuccess = $theme->save();
+            $updateSuccess = $theme->activateTheme();
 
             if ($updateSuccess) {
                 return redirect()

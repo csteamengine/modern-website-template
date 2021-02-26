@@ -20,6 +20,7 @@
 
         <x-slot name="body">
             @include('backend.themes.includes.theme-form', ['theme' => $theme, 'action' => 'update', 'actionText' => 'Update Theme', 'method' => 'PUT', 'route' => 'admin.themes.update'])
+            <hr>
             @include('backend.themes.includes.media', ['theme' => $theme])
             <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.themes.reorder-media', $theme)}}">
             <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">

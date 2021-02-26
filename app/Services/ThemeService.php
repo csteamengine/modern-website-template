@@ -54,6 +54,11 @@ class ThemeService extends BaseService
                 'secondary_color' => $data['secondary_color'],
                 'background_color' => $data['background_color'],
             ]);
+
+            if ($theme->is_active) {
+                $theme->activateTheme();
+            }
+
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -96,9 +101,11 @@ class ThemeService extends BaseService
                 'secondary_color' => $data['secondary_color'],
                 'background_color' => $data['background_color'],
             ]);
+
+            if ($theme->is_active) {
+                $theme->activateTheme();
+            }
         } catch (Exception $e) {
-            dump($e);
-            exit;
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem updating the Theme.'));

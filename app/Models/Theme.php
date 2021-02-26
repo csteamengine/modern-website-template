@@ -43,4 +43,28 @@ class Theme extends Model implements HasMedia
         'secondary_color',
         'background_color',
     ];
+
+    /**
+     * @param Theme $theme
+     * @return bool
+     */
+    public function activateTheme()
+    {
+        Theme::where('id', '!=', $this->id)->update(['is_active' => false]);
+
+        $this->is_active = true;
+        $updateSuccess = $this->save();
+
+        if ($updateSuccess) {
+            //Make artisan calls if necessary
+            if ($this->is_maintenance_mode) {
+                //System helper function I created
+                maintenance_mode();
+            } else {
+                live_mode();
+            }
+        }
+
+        return $updateSuccess;
+    }
 }

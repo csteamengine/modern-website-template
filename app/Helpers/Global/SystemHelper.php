@@ -36,3 +36,23 @@ if (! function_exists('includeRouteFiles')) {
         includeFilesInFolder($folder);
     }
 }
+
+if (! function_exists('maintenance_mode')) {
+    /**
+     *
+     */
+    function maintenance_mode()
+    {
+        Artisan::call('down');
+    }
+}
+
+if (! function_exists('live_mode')) {
+    /**
+     *
+     */
+    function live_mode()
+    {
+        Artisan::call('up');
+    }
+}

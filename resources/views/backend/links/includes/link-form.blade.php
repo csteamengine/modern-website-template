@@ -1,3 +1,7 @@
+@push('before-styles')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+@endpush
+
 {!! Form::model($link, ['route' => [$route, $link], 'method' => $method, 'files' => true]) !!}
     {!! Form::token(); !!}
 
@@ -64,7 +68,7 @@
         <div class="col">
             <div class="form-group">
                 {!! Form::label('description', 'Description'); !!}
-                {!! Form::text('description',null, ['class' => 'form-control', 'placeholder' => 'Description']); !!}
+                {!! Form::textarea('description',null, ['class' => 'form-control', 'placeholder' => 'Description', 'rows' => 10]); !!}
             </div>
         </div>
     </div>
@@ -76,4 +80,6 @@
     </div>
 {!! Form::close() !!}
 
-
+@push('after-scripts')
+    <script src="{{mix('js/backend/includes/forms.js')}}"></script>
+@endpush
