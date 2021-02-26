@@ -3,13 +3,33 @@
 @section('title', __('Dashboard'))
 
 @section('content')
-    <x-backend.card>
-        <x-slot name="header">
-            @lang('Welcome :Name', ['name' => $logged_in_user->name])
-        </x-slot>
+    <div class="row">
+        <div class="col col-sm-6">
+            <x-backend.card>
+                <x-slot name="header">
+                    @lang('Welcome :Name', ['name' => $logged_in_user->name])
+                </x-slot>
 
-        <x-slot name="body">
-            @lang('Welcome to the Dashboard')
-        </x-slot>
-    </x-backend.card>
+                <x-slot name="body">
+                    <canvas id="myChart" width="400" height="400" data-data="{{$visits}}" data-labels='["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]'></canvas>
+                </x-slot>
+            </x-backend.card>
+        </div>
+        <div class="col col-sm-6">
+            <x-backend.card>
+                <x-slot name="header">
+                    @lang('Welcome :Name', ['name' => $logged_in_user->name])
+                </x-slot>
+
+                <x-slot name="body">
+                    <canvas id="myChart" width="400" height="400" data-data="{{$visits}}" data-labels='["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]'></canvas>
+                </x-slot>
+            </x-backend.card>
+        </div>
+    </div>
 @endsection
+
+@push('after-scripts')
+    <script src="{{mix('js/backend/dashboard.js')}}"></script>
+@endpush
+

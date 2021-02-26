@@ -11,7 +11,6 @@ use App\Services\LinkService;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -38,7 +37,6 @@ class LinkController extends Controller
     public function __construct(LinkService $linkService)
     {
         $this->linkService = $linkService;
-
     }
     /**
      * Display a listing of the resource.
