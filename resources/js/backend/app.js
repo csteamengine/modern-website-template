@@ -56,3 +56,28 @@ $.fn.errorAlert = function (err){
         '    </div>';
     $('#mainContainer').prepend(html);
 }
+
+$.fn.ajaxCall = function(json, route, csrf_token, method, callback){
+    try {
+        $.ajax({
+            /* the route pointing to the post function */
+            url: route,
+            type: method,
+            /* send the csrf-token and the input to the controller */
+            data: {_token: csrf_token, objects: json},
+            dataType: 'JSON',
+            /* remind that 'data' is the response of the AjaxController */
+            success: function (data) {
+                $.fn.successAlert(data);
+                if(callback) callback();
+            },
+            error: function (err) {
+                $.fn.failureAlert(err);
+            }
+        });
+    } catch (err) {
+        $.fn.errorAlert(err);
+    }
+}
+
+

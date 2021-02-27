@@ -52,6 +52,17 @@ This template currently supports the following:
     * Logs
         * Admin users can view error logs.
 
+
+### Setup
+#### Analytics
+* To get Google Analytics setup, login to the [Google Anaylytics](https://analytics.google.com/)
+* Click on the Admin button on the bottom left
+* Create a new Account
+* Create a new Property (This is the website you want to track)
+* Once you have created a property, click on *Setup Assistant* in the property 
+* Click *Tag Installation* and copy the *Measurement ID* from the Web Stream Details
+* Paste the Measurement ID into the .env file next to GOOGLE_ANALYTICS_ID and set GOOGLE_ANALYTICS_ACTIVE to true
+* Google Anayltics should now be tracked and can be viewed on the Google Analytics console.
 ### Issues
 
 If you come across any issues please [report them here](https://github.com/csteamengine/modern-website-template/issues).

@@ -21,28 +21,11 @@ $(document).ready(function() {
             });
             json += ']';
 
-            try {
-                var c = $.parseJSON(json);
-                var route = $('#orderRoute').val();
-                var csrf_token = $('#csrfValue').val();
-                $.ajax({
-                    /* the route pointing to the post function */
-                    url: route,
-                    type: 'POST',
-                    /* send the csrf-token and the input to the controller */
-                    data: {_token: csrf_token, objects: json},
-                    dataType: 'JSON',
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) {
-                        $.fn.successAlert(data);
-                    },
-                    error: function (err) {
-                        $.fn.failureAlert(err);
-                    }
-                });
-            } catch (err) {
-                $.fn.errorAlert(err);
-            }
+            var c = $.parseJSON(json);
+            var route = $('#orderRoute').val();
+            var csrf_token = $('#csrfValue').val();
+
+            $.fn.ajaxCall(json, route, csrf_token, 'POST');
         });
 
     });

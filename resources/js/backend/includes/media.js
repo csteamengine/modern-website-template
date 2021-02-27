@@ -8,31 +8,19 @@ $(document).ready(function() {
         ]
     } );
     $('.media-delete-button').on('click',function(){
-        try {
-            var route = $(this).data('action');
-            var csrf_token = $('#csrfValue').val();
-            var button = $(this);
-            $.ajax({
-                /* the route pointing to the post function */
-                url: route,
-                type: 'DELETE',
-                /* send the csrf-token and the input to the controller */
-                data: {_token: csrf_token, media: $(this).data('id')},
-                dataType: 'JSON',
-                /* remind that 'data' is the response of the AjaxController */
-                success: function (data) {
-                    table.row(button.parents('tr') ).remove().draw();
-                    $.fn.successAlert(data);
+        var route = $(this).data('action');
+        var csrf_token = $('#csrfValue').val();
+        var button = $(this);
+        var id = $(this).data('id');
 
-                },
-                error: function (err) {
-                    $.fn.failureAlert(err);
-                }
-            });
-        } catch (err) {
-            $.fn.errorAlert(err);
+        function deleteRow(){
+            table.row(button.parents('tr') ).remove().draw()
         }
+
+        success = $.fn.ajaxCall(id, route, csrf_token, 'DELETE',deleteRow);
     })
+
+
 
     table.on('row-reordered', function (e, diff, edit) {
         table.one('draw', function () {
@@ -47,30 +35,13 @@ $(document).ready(function() {
             });
             json += ']';
 
-            try {
-                var c = $.parseJSON(json);
-                var route = $('#orderRoute').val();
-                var csrf_token = $('#csrfValue').val();
-                $.ajax({
-                    /* the route pointing to the post function */
-                    url: route,
-                    type: 'PATCH',
-                    /* send the csrf-token and the input to the controller */
-                    data: {_token: csrf_token, media: json},
-                    dataType: 'JSON',
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) {
-                        successAlert(data);
-                    },
-                    error: function (err) {
-                        failureAlert(err);
-                    }
-                });
-            } catch (err) {
-                errorAlert(err);
-            }
+            var route = $('#orderRoute').val();
+            var csrf_token = $('#csrfValue').val();
+            var id = $(this).data('id');
+            $.fn.ajaxCall(id, route, csrf_token, 'PATCH');
         });
 
     });
 } );
+
 
