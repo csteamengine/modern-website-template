@@ -1,6 +1,5 @@
 ## Modern Website Template
 
-[![StyleCI](https://styleci.io/repos/30171828/shield?style=plastic)](https://github.styleci.io/repos/30171828)
 ![Tests](https://github.com/csteamengine/modern-website-template/workflows/Tests/badge.svg?branch=master)
 <br/>
 ![GitHub contributors](https://img.shields.io/github/contributors/csteamengine/modern-website-template.svg)
