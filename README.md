@@ -1,10 +1,10 @@
 ## Modern Website Template
 
 [![StyleCI](https://styleci.io/repos/30171828/shield?style=plastic)](https://github.styleci.io/repos/30171828)
-![Tests](https://github.com/rappasoft/laravel-boilerplate/workflows/Tests/badge.svg?branch=master)
+![Tests](https://github.com/csteamengine/modern-website-template/workflows/Tests/badge.svg?branch=master)
 <br/>
-![GitHub contributors](https://img.shields.io/github/contributors/rappasoft/laravel-boilerplate.svg)
-![GitHub stars](https://img.shields.io/github/stars/rappasoft/laravel-boilerplate.svg?style=social)
+![GitHub contributors](https://img.shields.io/github/contributors/csteamengine/modern-website-template.svg)
+![GitHub stars](https://img.shields.io/github/stars/csteamengine/modern-website-template.svg?style=social)
 
 ### Demo Credentials
 
