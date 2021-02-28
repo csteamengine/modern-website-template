@@ -34,6 +34,12 @@ class UpdateThemeRequest extends FormRequest
             'last_name' => 'required|string',
             'description' => 'sometimes|string',
             'page_content' => 'nullable|string',
+            'github_url' => 'nullable|url',
+            'facebook_url' => 'nullable|url',
+            'instagram_url' => 'nullable|url',
+            'twitter_url' => 'nullable|url',
+            'youtube_url' => 'nullable|url',
+            'tiktok_url' => 'nullable|url',
             'email' => 'required|email',
             'phone' => [
                 'nullable',

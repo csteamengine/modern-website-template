@@ -123,6 +123,44 @@
             </div>
         </div>
     </div>
+    <div class="row mb-2">
+        <div class="col col-6 col-sm-4">
+            <div class="form-group">
+                {!! Form::label('github_url', 'Github URL'); !!}
+                {!! Form::url('github_url',null, ['class' => 'form-control', 'placeholder' => 'Github URL']); !!}
+            </div>
+        </div>
+        <div class="col col-6 col-sm-4">
+            <div class="form-group">
+                {!! Form::label('facebook_url', 'Facebook URL'); !!}
+                {!! Form::url('facebook_url',null, ['class' => 'form-control', 'placeholder' => 'Facebook URL']); !!}
+            </div>
+        </div>
+        <div class="col col-6 col-sm-4">
+            <div class="form-group">
+                {!! Form::label('instagram_url', 'Instagram URL'); !!}
+                {!! Form::url('instagram_url',null, ['class' => 'form-control', 'placeholder' => 'Instagram URL']); !!}
+            </div>
+        </div>
+        <div class="col col-6 col-sm-4">
+            <div class="form-group">
+                {!! Form::label('twitter_url', 'Twitter URL'); !!}
+                {!! Form::url('twitter_url',null, ['class' => 'form-control', 'placeholder' => 'Twitter URL']); !!}
+            </div>
+        </div>
+        <div class="col col-6 col-sm-4">
+            <div class="form-group">
+                {!! Form::label('youtube_url', 'YouTube URL'); !!}
+                {!! Form::url('youtube_url',null, ['class' => 'form-control', 'placeholder' => 'YouTube URL']); !!}
+            </div>
+        </div>
+        <div class="col col-6 col-sm-4">
+            <div class="form-group">
+                {!! Form::label('tiktok_url', 'TikTok URL'); !!}
+                {!! Form::url('tiktok_url',null, ['class' => 'form-control', 'placeholder' => 'TikTok URL']); !!}
+            </div>
+        </div>
+    </div>
 
     <div class="row mb-2">
         <div class="col">

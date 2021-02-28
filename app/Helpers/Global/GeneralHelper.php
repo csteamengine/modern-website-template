@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Theme;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -55,6 +57,24 @@ if (! function_exists('homeRoute')) {
     }
 }
 
+if (! function_exists('getActiveTheme')) {
+    /**
+     * Helper to grab the application name.
+     *
+     * @return mixed
+     */
+    function getActiveTheme()
+    {
+        try {
+            $theme = Theme::where('is_active', true)->firstOrFail();
+        } catch (ModelNotFoundException $exception) {
+            abort(503);
+        }
+
+        return $theme;
+    }
+}
+
 if (! function_exists('reorderObjects')) {
     /**
      * @param Request $request
@@ -92,7 +112,6 @@ if (! function_exists('activate')) {
      */
     function activate(Model $model)
     {
-
         if ($model) {
             $model->is_active = ! $model->is_active;
 
@@ -141,7 +160,6 @@ if (! function_exists('deleteMedia')) {
      */
     function deleteMedia(Request $request, Media $media)
     {
-
         if ($media->delete()) {
             return response()->json([
                 'message' => __("Successfully deleted the image!"),
