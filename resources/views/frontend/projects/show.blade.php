@@ -7,7 +7,12 @@
 @endpush
 
 @section('content')
-
+    <h1>
+        {{$project->title}}
+    </h1>
+    <p>
+        {!! $project->page_content !!}
+    </p>
 @endsection
 
 @push('after-scripts')

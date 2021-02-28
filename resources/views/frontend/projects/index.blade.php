@@ -7,6 +7,7 @@
 @endpush
 
 @section('content')
+    <h1>Projects</h1>
     <div class="row">
         @foreach($projects as $project)
             <div class="col card col-3">

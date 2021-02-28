@@ -8,6 +8,9 @@
 
 @section('content')
     <h1>About</h1>
+    <p>
+        {!! $active_theme->page_content !!}
+    </p>
 @endsection
 
 @push('after-scripts')

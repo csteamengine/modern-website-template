@@ -81,7 +81,7 @@
                             </div>
                             <div class="row">
                                 <div class="col text-center">
-                                    555-555-5555
+                                    {{$active_theme->phone}}
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                             </div>
                             <div class="row">
                                 <div class="col m-auto text-center">
-                                    email@email.com
+                                    {{$active_theme->email}}
                                 </div>
                             </div>
                         </div>
@@ -122,13 +122,13 @@
                                 <div class="col col-12 col-sm-6">
                                     <div class="form-group">
                                         {!! Form::label('first_name', 'First Name'); !!}
-                                        {!! Form::text('first_name',null, ['class' => 'form-control', 'placeholder' => 'First Name']); !!}
+                                        {!! Form::text('first_name',null, ['class' => 'form-control', 'placeholder' => 'First Name', 'required' => 'required']); !!}
                                     </div>
                                 </div>
                                 <div class="col col-12 col-sm-6">
                                     <div class="form-group">
                                         {!! Form::label('last_name', 'Last Name'); !!}
-                                        {!! Form::text('last_name',null, ['class' => 'form-control', 'placeholder' => 'Last Name']); !!}
+                                        {!! Form::text('last_name',null, ['class' => 'form-control', 'placeholder' => 'Last Name', 'required' => 'required']); !!}
                                     </div>
                                 </div>
                             </div>
@@ -136,15 +136,15 @@
                                 <div class="col">
                                     <div class="form-group">
                                         {!! Form::label('email', 'Email'); !!}
-                                        {!! Form::text('email',null, ['class' => 'form-control', 'placeholder' => 'Email']); !!}
+                                        {!! Form::text('email',null, ['class' => 'form-control', 'placeholder' => 'Email', 'required' => 'required']); !!}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        {!! Form::label('description', 'Description'); !!}
-                                        {!! Form::textarea('description',null, ['class' => 'form-control', 'placeholder' => 'Description', 'rows' => 5]); !!}
+                                        {!! Form::label('message', 'Message'); !!}
+                                        {!! Form::textarea('message',null, ['class' => 'form-control', 'placeholder' => 'Message', 'rows' => 5, 'required' => 'required']); !!}
                                     </div>
                                 </div>
                             </div>

@@ -8,7 +8,9 @@
 
 @section('content')
     <h1>{{$blog->title}}</h1>
-    {{$blog->tags}}
+    <p>
+        {!! $blog->page_content !!}
+    </p>
     <h3>Tags</h3>
     @foreach(explode(',',$blog->tags) as $tag)
         <a href="{{route('frontend.blogs.related', trim($tag, ' '))}}">{{trim($tag, ' ')}}</a>
