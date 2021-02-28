@@ -27,6 +27,7 @@ class Theme extends Model implements HasMedia
         'description',
         'page_content',
         'email',
+        'phone',
         'is_active',
         'order',
         'resume_file_id',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\Theme;
+namespace App\Http\Requests\Backend\Blog;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 /**
  * Class UpdateRoleRequest.
  */
-class UpdateThemeRequest extends FormRequest
+class UpdateBlogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,26 +29,18 @@ class UpdateThemeRequest extends FormRequest
      */
     public function rules()
     {
+        //TODO update Rules
         return [
             'title' => 'required|string',
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'description' => 'sometimes|string',
+            'short_description' => 'nullable|string',
+            'tags' => 'nullable|string',
+            'description' => 'nullable|string',
             'page_content' => 'nullable|string',
-            'email' => 'required|email',
-            'phone' => 'nullable',
+            'external_url' => 'nullable|url',
             'is_active' => 'sometimes|boolean',
+            'started_at' => 'nullable|date',
+            'finished_at' => 'nullable|date|after_or_equal:started_at',
             'media.*' => 'nullable|image',
-            'resume' => 'nullable|file',
-            'background_image' => 'nullable|image',
-            'about_image' => 'nullable|image',
-            'is_maintenance_mode' => 'sometimes|boolean',
-            'contact_active' => 'sometimes|boolean',
-            'resume_active' => 'sometimes|boolean',
-            'background_video_active' => 'sometimes|boolean',
-            'primary_color' => 'nullable|string',
-            'secondary_color' => 'nullable|string',
-            'background_color' => 'nullable|string',
         ];
     }
 
@@ -61,6 +53,6 @@ class UpdateThemeRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('You can not update themes.'));
+        throw new AuthorizationException(__('You can not update blogs.'));
     }
 }

@@ -34,6 +34,13 @@
                     </li>
                     <li class="nav-item">
                         <x-utils.link
+                            :href="route('frontend.blogs')"
+                            :active="activeClass(Active::checkRoute(['frontend.blogs', 'frontend.blogs.show']))"
+                            :text="__('Blogs')"
+                            class="nav-link" />
+                    </li>
+                    <li class="nav-item">
+                        <x-utils.link
                             :href="route('frontend.about')"
                             :active="activeClass(Active::checkRoute('frontend.about'))"
                             :text="__('About')"

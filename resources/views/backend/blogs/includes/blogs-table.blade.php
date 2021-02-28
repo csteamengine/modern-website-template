@@ -1,6 +1,6 @@
 @push('before-styles')
 @endpush
-<table id="projectsTable" class="display reorder-table table table-striped table-bordered" style="width:100%">
+<table id="blogsTable" class="display reorder-table table table-striped table-bordered" style="width:100%">
     <thead>
     <tr>
         <th>Order</th>
@@ -12,26 +12,26 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($projects as $project)
+    @foreach($blogs as $blog)
         <tr>
             <td>{{$loop->index+1}}</td>
-            <td>{{$project->id}}</td>
+            <td>{{$blog->id}}</td>
             <td>
                 <label class="c-switch c-switch-success">
-                    {!! Form::checkbox('is_active', true, $project->is_active, [
-                        'data-id'=>$project->id,
+                    {!! Form::checkbox('is_active', true, $blog->is_active, [
+                        'data-id'=>$blog->id,
                         'class' => 'status-input c-switch-input',
                         'data-toggle'=>'toggle',
                         'data-onstyle' => 'success',
-                        'data-route' => route('admin.projects.activate', $project)
+                        'data-route' => route('admin.blogs.activate', $blog)
                         ]) !!}
                     <span class="c-switch-slider"></span>
                 </label>
             </td>
-            <td>{{$project->title}}</td>
-            <td>{{$project->started_at}} - {{$project->finished_at}}</td>
+            <td>{{$blog->title}}</td>
+            <td>{{$blog->started_at}} - {{$blog->finished_at}}</td>
             <td>
-                @include('backend.projects.includes.actions', $model = $project)
+                @include('backend.blogs.includes.actions', $model = $blog)
             </td>
         </tr>
     @endforeach
@@ -49,7 +49,7 @@
 </table>
 
 @push('after-scripts')
-    <script src="{{ mix('js/backend/projects/blogs.js') }}"></script>
+    <script src="{{ mix('js/backend/blogs/blogs.js') }}"></script>
     <script src="{{ mix('js/backend/includes/reorder.js') }}"></script>
     <script src="{{ mix('js/backend/includes/switch.js') }}"></script>
 @endpush

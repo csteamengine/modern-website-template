@@ -7,7 +7,7 @@
         <div class="col col-sm-6">
             <x-backend.card>
                 <x-slot name="header">
-                    @lang('Welcome :Name', ['name' => $logged_in_user->name])
+                    @lang('Link Views')
                 </x-slot>
 
                 <x-slot name="body">
@@ -18,7 +18,7 @@
         <div class="col col-sm-6">
             <x-backend.card>
                 <x-slot name="header">
-                    @lang('Welcome :Name', ['name' => $logged_in_user->name])
+                    @lang('Blog Views')
                 </x-slot>
 
                 <x-slot name="body">

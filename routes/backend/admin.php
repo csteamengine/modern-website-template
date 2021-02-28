@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LinkController;
 use App\Http\Controllers\Backend\PositionController;
@@ -16,6 +17,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 
 Route::resources([
     'projects' => ProjectController::class,
+    'blogs' => BlogController::class,
     'themes' => ThemeController::class,
     'links' => LinkController::class,
     'positions' => PositionController::class,
@@ -30,6 +32,13 @@ Route::group(['namespace' => 'Projects', 'prefix' => 'projects', 'as' => 'projec
     Route::patch('{project}/activate', [ProjectController::class, 'activate'])->name('activate');
     Route::patch('{project}/reorder', [ProjectController::class, 'reorderMedia'])->name('reorder-media');
     Route::delete('/delete-media/{media}', [ProjectController::class, 'deleteMedia'])->name('delete-media');
+});
+
+Route::group(['namespace' => 'Blogs', 'prefix' => 'blogs', 'as' => 'blogs.', 'middleware' => 'admin'], function () {
+    Route::post('/reorder', [BlogController::class, 'reorder'])->name('reorder');
+    Route::patch('{blog}/activate', [BlogController::class, 'activate'])->name('activate');
+    Route::patch('{blog}/reorder', [BlogController::class, 'reorderMedia'])->name('reorder-media');
+    Route::delete('/delete-media/{media}', [BlogController::class, 'deleteMedia'])->name('delete-media');
 });
 
 Route::group(['namespace' => 'Themes', 'prefix' => 'themes', 'as' => 'themes.', 'middleware' => 'admin'], function () {

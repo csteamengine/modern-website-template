@@ -28,6 +28,14 @@
         <li class="c-sidebar-nav-item">
             <x-utils.link
                 class="c-sidebar-nav-link"
+                :href="route('admin.blogs.index')"
+                :active="activeClass(Route::is('admin.blogs.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-briefcase"
+                :text="__('Blogs')" />
+        </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
                 :href="route('admin.positions.index')"
                 :active="activeClass(Route::is('admin.positions.index'), 'c-active')"
                 icon="c-sidebar-nav-icon cil-user"

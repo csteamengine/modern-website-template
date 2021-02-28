@@ -89,10 +89,16 @@
                 </div>
             </div>
         </div>
-        <div class="col col-12 col-sm-10">
+        <div class="col col-12 col-sm-5">
             <div class="form-group">
                 {!! Form::label('title', 'Title'); !!}
                 {!! Form::text('title',null, ['class' => 'form-control', 'placeholder' => 'Theme Title']); !!}
+            </div>
+        </div>
+        <div class="col col-12 col-sm-5">
+            <div class="form-group">
+                {!! Form::label('phone', 'Phone Number'); !!}
+                {!! Form::text('phone',null, ['class' => 'form-control', 'placeholder' => 'Phone Number']); !!}
             </div>
         </div>
     </div>

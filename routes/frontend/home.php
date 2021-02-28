@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LinkController;
@@ -27,6 +28,9 @@ Route::get('terms', [TermsController::class, 'index'])
 
 Route::get('projects/', [ProjectController::class, 'index'])->name('projects');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('blogs/', [BlogController::class, 'index'])->name('blogs');
+Route::get('blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
+Route::get('blogs/related/{tag}', [BlogController::class, 'related'])->name('blogs.related');
 Route::get('links', [LinkController::class, 'index'])->name('links');
 Route::get('links/{link}', [LinkController::class, 'show'])->name('links.show');
 Route::get('positions', [LinkController::class, 'index'])->name('positions');

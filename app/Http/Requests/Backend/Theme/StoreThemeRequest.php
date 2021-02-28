@@ -36,6 +36,7 @@ class StoreThemeRequest extends FormRequest
             'description' => 'sometimes|string',
             'page_content' => 'nullable|string',
             'email' => 'required|email',
+            'phone' => 'nullable',
             'is_active' => 'sometimes|boolean',
             'media.*' => 'nullable|image',
             'resume' => 'nullable|file',

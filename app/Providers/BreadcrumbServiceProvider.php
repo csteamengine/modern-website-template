@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers;
 
+use App\Models\Blog;
 use App\Models\Link;
 use App\Models\Position;
 use App\Models\Theme;
@@ -46,6 +47,30 @@ class BreadcrumbServiceProvider extends ServiceProvider
             function (Trail $trail) {
                 return $trail->parent('admin.projects.index')
                     ->push('Create Project', route('admin.projects.create'));
+            }
+        );
+
+        Breadcrumbs::for(
+            'admin.blogs.index',
+            function (Trail $trail) {
+                return $trail->parent('admin.dashboard')
+                    ->push('Blogs', route('admin.blogs.index'));
+            }
+        );
+
+        Breadcrumbs::for(
+            'admin.blogs.edit',
+            function (Trail $trail, Blog $blog) {
+                return $trail->parent('admin.blogs.index')
+                    ->push('Edit Blog', route('admin.blogs.edit', $blog));
+            }
+        );
+
+        Breadcrumbs::for(
+            'admin.blogs.create',
+            function (Trail $trail) {
+                return $trail->parent('admin.blogs.index')
+                    ->push('Create Blog', route('admin.blogs.create'));
             }
         );
 

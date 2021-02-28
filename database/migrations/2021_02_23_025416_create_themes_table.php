@@ -18,6 +18,7 @@ class CreateThemesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
+            $table->string('phone')->nullable();
             $table->string('title');
             $table->string('job_title')->nullable();
             $table->string('github_url')->nullable();
