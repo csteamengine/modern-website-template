@@ -2,9 +2,7 @@
 
 @section('title', __('labels.backend.themes.management') . ' | ' . __('labels.backend.themes.create'))
 
-{{--@push('after-styles')--}}
-{{--    {!! style('/css/backend/theme.css') !!}--}}
-{{--    {!! style('/css/backend/summernote.css') !!}--}}
+{{--@push('before-styles')--}}
 {{--@endpush--}}
 
 @push('before-scripts')
@@ -21,7 +19,7 @@
         <x-slot name="body">
             @include('backend.themes.includes.theme-form', ['theme' => $theme, 'action' => 'update', 'actionText' => 'Update Theme', 'method' => 'PUT', 'route' => 'admin.themes.update'])
             <hr>
-            @include('backend.themes.includes.media', ['theme' => $theme])
+            @include('backend.includes.media.media', ['model' => $theme, 'collection' => 'images', 'deleteRoute' => 'admin.themes.delete-media'])
             <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.themes.reorder-media', $theme)}}">
             <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">
         </x-slot>

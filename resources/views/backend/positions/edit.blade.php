@@ -21,7 +21,7 @@
         <x-slot name="body">
             @include('backend.positions.includes.position-form', ['position' => $position, 'action' => 'update', 'actionText' => 'Update Position', 'method' => 'PUT', 'route' => 'admin.positions.update'])
             <hr>
-            @include('backend.positions.includes.media', ['position' => $position])
+            @include('backend.includes.media.media', ['model' => $position, 'collection' => 'images', 'deleteRoute' => 'admin.positions.delete-media'])
             <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.positions.reorder-media', $position)}}">
             <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">
         </x-slot>

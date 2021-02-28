@@ -74,4 +74,12 @@ class Theme extends Model implements HasMedia
 
         return $updateSuccess;
     }
+
+    /**
+     * Gets the resume file if there is one.
+     */
+    public function resume()
+    {
+        return $this->getMedia('resumes')->where('id', $this->resume_file_id)->first();
+    }
 }

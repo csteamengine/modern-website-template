@@ -30,7 +30,7 @@
             <td>{{$media->name}}</td>
             <td>{{$media->getCustomProperty('color')}}</td>
             <td>
-                @include('backend.includes.media.media-actions', $model = $media)
+                @include('backend.includes.media.media-actions', ['current' => $media])
             </td>
         </tr>
     @endforeach

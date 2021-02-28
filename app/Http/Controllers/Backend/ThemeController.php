@@ -227,12 +227,12 @@ class ThemeController extends Controller
         }
 
         if ($request->hasFile('resume')) {
-            $extractor = new PHPColorExtractor();
-            $extractor->setImage($request->file('resume'))->setTotalColors(5)->setGranularity(10);
-            $palette = $extractor->extractPalette();
+//            $extractor = new PHPColorExtractor();
+//            $extractor->setImage($request->file('resume'))->setTotalColors(5)->setGranularity(10);
+//            $palette = $extractor->extractPalette();
 
             $resume = $theme->addMedia($request->file('resume'))
-                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+//                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
                 ->toMediaCollection('resumes');
             $theme->resume_file_id = $resume->id;
         }

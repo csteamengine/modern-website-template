@@ -43,6 +43,7 @@ mix.setPublicPath('public')
         'datatables.net-bs4',
         'datatables.net-rowreorder-bs4',
         'lodash',
+        'clipboard',
     ])
     .sourceMaps();
 

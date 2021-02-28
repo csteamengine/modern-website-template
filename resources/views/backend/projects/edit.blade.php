@@ -16,7 +16,7 @@
         <x-slot name="body">
             @include('backend.projects.includes.project-form', ['project' => $project, 'action' => 'update', 'actionText' => 'Update Project', 'method' => 'PUT', 'route' => 'admin.projects.update'])
             <hr>
-            @include('backend.projects.includes.media', ['project' => $project])
+            @include('backend.includes.media.media', ['model' => $project, 'collection' => 'images', 'deleteRoute' => 'admin.projects.delete-media'])
             <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.projects.reorder-media', $project)}}">
             <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">
         </x-slot>

@@ -28,7 +28,7 @@ class ThemesTableSeeder extends Seeder
             'youtube_url' => 'www.example.com',
             'tiktok_url' => 'www.example.com',
             'description' => 'This is the first theme',
-            'page_content' => '<h1>Theme 1</h1>',
+            'page_content' => '<h1>Hello! My name is theme1</h1><p>I have been a <b>theme</b> as <font color="#e7d6de"><span style="background-color: rgb(140, 123, 198);">long</span></font>&nbsp;as I can remember, and so far it has been pretty cool.</p><p><br></p><p><br></p>',
             'is_active' => true,
             'primary_color' => '#FDB716',
             'secondary_color' => '#0099cc',

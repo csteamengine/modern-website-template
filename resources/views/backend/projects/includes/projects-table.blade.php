@@ -49,7 +49,7 @@
 </table>
 
 @push('after-scripts')
-    <script src="{{ mix('js/backend/projects/blogs.js') }}"></script>
+    <script src="{{ mix('js/backend/projects/projects.js') }}"></script>
     <script src="{{ mix('js/backend/includes/reorder.js') }}"></script>
     <script src="{{ mix('js/backend/includes/switch.js') }}"></script>
 @endpush

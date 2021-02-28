@@ -1,4 +1,4 @@
-<a href="{{route('admin.links.create')}}">
+<a href="{{$route}}">
     <button type="button" class="btn btn-success">
         <span class="cil-plus btn-icon"></span>
     </button>

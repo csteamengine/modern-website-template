@@ -3,7 +3,7 @@
 @section('title', __('Theme Management'))
 
 @section('breadcrumb-links')
-    @include('backend.themes.includes.breadcrumb-links')
+    @include('backend.includes.partials.breadcrumb-links', ['route' => route('admin.themes.create')])
 @endsection
 
 @section('content')

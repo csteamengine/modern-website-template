@@ -3,7 +3,7 @@
 @section('title', __('Project Management'))
 
 @section('breadcrumb-links')
-    @include('backend.projects.includes.breadcrumb-links')
+    @include('backend.includes.partials.breadcrumb-links', ['route' => route('admin.projects.create')])
 @endsection
 
 @section('content')

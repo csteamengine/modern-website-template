@@ -6,7 +6,7 @@
 @endpush
 
 @section('breadcrumb-links')
-    @include('backend.links.includes.breadcrumb-links')
+    @include('backend.includes.partials.breadcrumb-links', ['route' => route('admin.links.create')])
 @endsection
 
 @section('content')

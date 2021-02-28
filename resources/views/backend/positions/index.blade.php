@@ -3,8 +3,9 @@
 @section('title', __('Position Management'))
 
 @section('breadcrumb-links')
-    @include('backend.positions.includes.breadcrumb-links')
+    @include('backend.includes.partials.breadcrumb-links', ['route' => route('admin.positions.create')])
 @endsection
+
 
 @section('content')
 

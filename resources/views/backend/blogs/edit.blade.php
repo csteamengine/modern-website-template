@@ -16,7 +16,7 @@
         <x-slot name="body">
             @include('backend.blogs.includes.blog-form', ['blog' => $blog, 'action' => 'update', 'actionText' => 'Update blog', 'method' => 'PUT', 'route' => 'admin.blogs.update'])
             <hr>
-            @include('backend.blogs.includes.media', ['blog' => $blog])
+            @include('backend.includes.media.media', ['model' => $blog, 'collection' => 'images', 'deleteRoute' => 'admin.blogs.delete-media'])
             <input type="hidden" name="order-route" id="orderRoute" value="{{route('admin.blogs.reorder-media', $blog)}}">
             <input type="hidden" name="csrf-value" id="csrfValue" value="{{csrf_token()}}">
         </x-slot>

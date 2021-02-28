@@ -3,7 +3,7 @@
 @section('title', __('Blog Management'))
 
 @section('breadcrumb-links')
-    @include('backend.blogs.includes.breadcrumb-links')
+    @include('backend.includes.partials.breadcrumb-links', ['route' => route('admin.blogs.create')])
 @endsection
 
 @section('content')

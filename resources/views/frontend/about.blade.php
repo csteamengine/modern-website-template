@@ -8,6 +8,9 @@
 
 @section('content')
     <h1>About</h1>
+    @if($active_theme->resume_active)
+        <a href="{{$active_theme->resume()->getUrl()}}" target="_blank">Download Resume</a>
+    @endif
     <p>
         {!! $active_theme->page_content !!}
     </p>

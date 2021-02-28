@@ -13,6 +13,7 @@ require('@coreui/coreui');
 require('../plugins');
 
 import "chart.js";
+import ClipboardJS from 'clipboard'
 
 $.fn.successAlert = function (data){
     let html = '<div class="alert alert-success" role="alert">' +
@@ -80,4 +81,7 @@ $.fn.ajaxCall = function(json, route, csrf_token, method, callback){
     }
 }
 
+$(document).ready(function(){
+    let copy = new ClipboardJS('.media-copy-button');
+})
 
