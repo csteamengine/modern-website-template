@@ -30,7 +30,7 @@
                 class="c-sidebar-nav-link"
                 :href="route('admin.blogs.index')"
                 :active="activeClass(Route::is('admin.blogs.index'), 'c-active')"
-                icon="c-sidebar-nav-icon cil-briefcase"
+                icon="c-sidebar-nav-icon cil-newspaper"
                 :text="__('Blogs')" />
         </li>
         <li class="c-sidebar-nav-item">

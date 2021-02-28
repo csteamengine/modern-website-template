@@ -37,7 +37,7 @@
         @include('frontend.includes.nav')
         @include('includes.partials.messages')
 
-        <main class="row">
+        <main class="container">
             <div class="col-10 m-auto">
                 @yield('content')
             </div>
