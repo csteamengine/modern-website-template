@@ -17,11 +17,18 @@
             @include('frontend.blogs.includes.blogs-table', ['blogs' => $blogs])
         </div>
     </div>
-    @foreach($blogs as $blog)
-        <h1>
-            <a href="{{route('frontend.blogs.show', $blog)}}">{{$blog->title}}</a>
-        </h1>
-    @endforeach
+    <div class="row">
+        @foreach($blogs as $blog)
+
+            <div class="col card col-6">
+                <div class="card-body m-auto">
+                    <h1>
+                        <a href="{{route('frontend.blogs.show', $blog)}}">{{$blog->title}}</a>
+                    </h1>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
 
 @push('after-scripts')

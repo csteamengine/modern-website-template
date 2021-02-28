@@ -5,7 +5,6 @@ namespace App\Http\Requests\Backend\Theme;
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /**
  * Class UpdateRoleRequest.
@@ -36,7 +35,10 @@ class UpdateThemeRequest extends FormRequest
             'description' => 'sometimes|string',
             'page_content' => 'nullable|string',
             'email' => 'required|email',
-            'phone' => 'nullable',
+            'phone' => [
+                'nullable',
+                'regex:^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$^',
+            ],
             'is_active' => 'sometimes|boolean',
             'media.*' => 'nullable|image',
             'resume' => 'nullable|file',

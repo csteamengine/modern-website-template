@@ -7,7 +7,17 @@
 @endpush
 
 @section('content')
-    <h1>Career</h1>
+    <div class="row">
+        @foreach($positions as $position)
+            <div class="col card col-3">
+                <div class="card-body m-auto">
+                    <h1>
+                        <a href="{{route('frontend.positions.show', $position)}}">{{$position->title}}</a>
+                    </h1>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
 
 @push('after-scripts')

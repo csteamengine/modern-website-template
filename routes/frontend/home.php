@@ -38,5 +38,5 @@ Route::get('positions/{position}', [LinkController::class, 'show'])->name('posit
 Route::get('career', [PositionController::class, 'index'])->name('career');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
-Route::post('contact', [ContactController::class, 'send'])->name('send');
+Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 

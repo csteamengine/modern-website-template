@@ -37,8 +37,10 @@
         @include('frontend.includes.nav')
         @include('includes.partials.messages')
 
-        <main>
-            @yield('content')
+        <main class="row">
+            <div class="col-10 m-auto">
+                @yield('content')
+            </div>
         </main>
     </div><!--app-->
 
