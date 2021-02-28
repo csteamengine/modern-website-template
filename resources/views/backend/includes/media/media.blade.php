@@ -1,4 +1,3 @@
-
 @push('before-styles')
 @endpush
 
@@ -9,11 +8,12 @@
         <th>ID</th>
         <th>Image</th>
         <th>Filename</th>
+        <th>Color</th>
         <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($position->getMedia('images') as $media)
+    @foreach($model->getMedia($collection) as $media)
         <tr>
             <td>{{$loop->index+1}}</td>
             <td>{{$media->id}}</td>
@@ -28,8 +28,9 @@
                      title="<img src='{{$media->getUrl()}}' width='100%' />">
             </td>
             <td>{{$media->name}}</td>
+            <td>{{$media->getCustomProperty('color')}}</td>
             <td>
-                @include('backend.positions.includes.media-actions', $model = $media)
+                @include('backend.includes.media.media-actions', $model = $media)
             </td>
         </tr>
     @endforeach

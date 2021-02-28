@@ -35,5 +35,6 @@
     </tbody>
 </table>
 
-@push('after-scripts')
+@push('before-scripts')
+{{--    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>--}}
 @endpush
