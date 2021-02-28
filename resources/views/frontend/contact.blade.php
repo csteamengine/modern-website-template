@@ -9,7 +9,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col col-12 col-sm-6">
-            <div class="row m3">
+            <div class="row">
                 <div class="col card">
                     <div class="card-body m-auto">
                         <div class="row">
@@ -23,14 +23,46 @@
 
             </div>
             <div class="row mt-3">
-                <div class="col card col-6">
-                    <div class="card-body m-auto">
-                        Email Me
+                <div class="col col-6 pl-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row m">
+                                <div class="col text-center">
+                                    <i class="fas fa-phone fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    Call Me
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    555-555-5555
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col card col-6">
-                    <div class="card-body m-auto">
-                        Call Me
+                <div class="col col-6 pr-0">
+                    <div class="card">
+                        <div class="card-body m-auto">
+                            <div class="row">
+                                <div class="col m-auto text-center">
+                                    <i class="fas fa-envelope fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col m-auto text-center">
+                                    Email Me
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col m-auto text-center">
+                                    email@email.com
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
