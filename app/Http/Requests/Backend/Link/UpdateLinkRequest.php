@@ -30,8 +30,6 @@ class UpdateLinkRequest extends FormRequest
             'title' => 'required|max:191',
             'url' => 'required|url',
             'description' => 'nullable|string',
-            'page_content' => 'nullable|string',
-            'external_url' => 'nullable|url',
             'is_active' => 'sometimes|boolean',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:started_at',

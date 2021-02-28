@@ -35,6 +35,7 @@ class UpdatePositionRequest extends FormRequest
             'description' => 'sometimes|string',
             'short_description' => 'sometimes|string',
             'page_content' => 'nullable|string',
+            'external_url' => 'nullable|url',
             'is_active' => 'sometimes|boolean',
             'media.*' => 'nullable|image',
             'start_date' => 'nullable|date',

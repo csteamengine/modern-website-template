@@ -1,57 +1,58 @@
 <?php
 
-namespace Tests\Feature\Backend\Projects;
+namespace Tests\Feature\Backend\Blogs;
 
 use App\Domains\Auth\Models\User;
-use App\Events\Project\ProjectCreated;
-use App\Events\Project\ProjectUpdated;
-use App\Models\Project;
+use App\Events\Blog\BlogCreated;
+use App\Events\Blog\BlogUpdated;
+use App\Models\Blog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
-class UpdateProjectTest extends TestCase
+class UpdateBlogTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function only_admin_can_update_projects()
+    public function only_admin_can_update_blogs()
     {
         $this->actingAs(User::factory()->user()->create());
 
-        $project = Project::factory()->create();
+        $blog = Blog::factory()->create();
 
-        $response = $this->get(route('admin.projects.edit', $project));
+        $response = $this->get(route('admin.blogs.edit', $blog));
 
         $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
     }
 
     /** @test */
-    public function an_admin_can_access_the_edit_projects_page()
+    public function an_admin_can_access_the_edit_blogs_page()
     {
         $this->loginAsAdmin();
 
-        $project = Project::factory()->create();
+        $blog = Blog::factory()->create();
 
-        $response = $this->get(route('admin.projects.edit', $project));
+        $response = $this->get(route('admin.blogs.edit', $blog));
 
         $response->assertOk();
     }
 
     /** @test */
-    public function admin_can_update_project()
+    public function admin_can_update_blog()
     {
         Event::fake();
 
         $this->loginAsAdmin();
 
-        $project = Project::factory()->create();
+        $blog = Blog::factory()->create();
 
-        $response = $this->patch(route('admin.projects.update', $project), [
+        $response = $this->patch(route('admin.blogs.update', $blog), [
             'title' => "Fake Title Update",
             'short_description' => 'Fake Short Description Update',
             'description' => 'Fake Description Update',
+            'tags' => 'Fake, Test, Not Real, Nope, Update',
             'page_content' => '<h1>Fake Page Content Update</h1>',
             'external_url' => 'https://www.example.com/update',
             'started_at' => '10/05/1995',
@@ -60,11 +61,12 @@ class UpdateProjectTest extends TestCase
         ]);
 
         $this->assertDatabaseHas(
-            'projects',
+            'blogs',
             [
                 'title' => "Fake Title Update",
                 'short_description' => 'Fake Short Description Update',
                 'description' => 'Fake Description Update',
+                'tags' => 'Fake, Test, Not Real, Nope, Update',
                 'page_content' => '<h1>Fake Page Content Update</h1>',
                 'external_url' => 'https://www.example.com/update',
                 'started_at' => '10/05/1995',
@@ -73,8 +75,8 @@ class UpdateProjectTest extends TestCase
             ]
         );
 
-        $response->assertSessionHas(['flash_success' => __('Successfully Updated the Project')]);
+        $response->assertSessionHas(['flash_success' => __('Successfully Updated the Blog')]);
 
-        Event::assertDispatched(ProjectUpdated::class);
+        Event::assertDispatched(BlogUpdated::class);
     }
 }
