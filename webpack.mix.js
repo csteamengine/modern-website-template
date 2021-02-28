@@ -28,6 +28,7 @@ mix.setPublicPath('public')
     .js('resources/js/backend/links/links.js', 'js/backend/links/links.js')
     .js('resources/js/backend/links/link.js', 'js/backend/links/link.js')
     .js('resources/js/backend/links/show.js', 'js/backend/links/show.js')
+    .js('resources/js/frontend/blogs/blogs.js', 'js/frontend/blogs/blogs.js')
     .js('resources/js/frontend/app.js', 'js/frontend.js')
     .js('resources/js/backend/app.js', 'js/backend.js')
     .extract([

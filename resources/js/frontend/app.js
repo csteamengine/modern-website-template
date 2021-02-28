@@ -6,6 +6,7 @@
 
 require('../bootstrap');
 require('../plugins');
+require('datatables.net-bs4');
 
 import Vue from 'vue';
 
