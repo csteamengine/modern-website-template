@@ -2,7 +2,6 @@
 
 ![Tests](https://github.com/csteamengine/modern-website-template/workflows/Tests/badge.svg?branch=master)
 <br/>
-![GitHub contributors](https://img.shields.io/github/contributors/csteamengine/modern-website-template.svg)
 ![GitHub stars](https://img.shields.io/github/stars/csteamengine/modern-website-template.svg?style=social)
 
 ### Demo Credentials
