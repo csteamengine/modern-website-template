@@ -60,6 +60,14 @@ displayed in the way that you see fit.
     DB_USERNAME=homestead
     DB_PASSWORD=secret
   ```
+  * Configure the default administrator account in the .env file.
+    * This will be used when seeding the database
+  ```shell
+    ADMIN_FIRST_NAME=
+    ADMIN_LAST_NAME=
+    ADMIN_EMAIL=
+    ADMIN_PASSWORD=
+  ```
 * Run Composer Install
     ```shell
     cd modern-website-template

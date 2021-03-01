@@ -20,12 +20,14 @@ class UserSeeder extends Seeder
     {
         $this->disableForeignKeys();
 
+        $name = env('ADMIN_FIRST_NAME', 'Admin') . ' ' . env('ADMIN_LAST_NAME', 'Istrator');
+
         // Add the master administrator, user id of 1
         User::create([
             'type' => User::TYPE_ADMIN,
-            'name' => 'Super Admin',
-            'email' => 'admin@admin.com',
-            'password' => 'secret',
+            'name' => $name,
+            'email' => env('ADMIN_EMAIL', 'admin@admin.com'),
+            'password' => env('ADMIN_PASSWORD', 'secret'),
             'email_verified_at' => now(),
             'active' => true,
         ]);
