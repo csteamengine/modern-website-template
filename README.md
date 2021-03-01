@@ -104,6 +104,7 @@ displayed in the way that you see fit.
     ```shell
     cd ~/Homestead
     vagrant ssh
+    cd code/<project repo>/
     php artisan link:storage
     ```
 * Go for a spin!
