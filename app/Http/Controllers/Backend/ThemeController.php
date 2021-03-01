@@ -85,8 +85,7 @@ class ThemeController extends Controller
      */
     public function show(Theme $theme)
     {
-        dump($theme);
-        exit;
+        return redirect()->route('admin.themes.index');
     }
 
     /**
