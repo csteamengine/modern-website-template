@@ -99,8 +99,11 @@ displayed in the way that you see fit.
     ```shell
     npm run watch
     ```
-* Link `storage`
+* Link `storage`, this needs to be run from within the vagran VM is you are using Homestead (works best by my experience.)
+  
     ```shell
+    cd ~/Homestead
+    vagrant ssh
     php artisan link:storage
     ```
 * Go for a spin!
