@@ -66,7 +66,11 @@
         </style>
         @stack('after-styles')
     </head>
-    <body>
+    @if(isset($active_theme) && $active_theme->background_image() != null)
+        <body data-image="{{$active_theme->background_image()->getUrl()}}" class="lazy-load">
+    @else
+        <body>
+    @endif
         @include('includes.partials.read-only')
         @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')

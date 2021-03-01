@@ -32,3 +32,25 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function(){
+    var body = $('body.lazy-load');
+    var image = body.data('image');
+    var img = $('<img />').attr({
+        'src': image,
+    }).on('load', function() {
+        body.css('background', 'url("'+image+'") center center fixed');
+        body.css('background-size', 'cover');
+    });
+
+    $('.lazy-load').each(function(){
+        var image = $(this).data('image');
+        var img = $('<img />').attr({
+            'src': image,
+        }).on('load', function() {
+            //TODO set each image
+            //     $(this).css('background', 'url("'+image+'") center center fixed');
+            //     $(this).css('background-size', 'cover');
+        });
+    });
+});
