@@ -84,4 +84,20 @@ class Theme extends Model implements HasMedia
     {
         return $this->getMedia('resumes')->where('id', $this->resume_file_id)->first();
     }
+
+    /**
+     * Gets the background image if there is one.
+     */
+    public function background_image()
+    {
+        return $this->getMedia('background_images')->where('id', $this->background_image_id)->first();
+    }
+
+    /**
+     * Gets the about image if there is one.
+     */
+    public function about_image()
+    {
+        return $this->getMedia('about_images')->where('id', $this->about_image_id)->first();
+    }
 }
