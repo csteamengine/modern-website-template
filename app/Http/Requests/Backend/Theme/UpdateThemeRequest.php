@@ -46,7 +46,7 @@ class UpdateThemeRequest extends FormRequest
                 'regex:^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$^',
             ],
             'is_active' => 'sometimes|boolean',
-            'media.*' => 'nullable|image',
+            'media.*' => 'nullable|mimes:pdf,jpeg,jpg,png,mp4',
             'resume' => 'nullable|file',
             'background_image' => 'nullable|image',
             'about_image' => 'nullable|image',

@@ -53,7 +53,7 @@
         <div class="col col-12 col-sm-6">
             <div class="form-group">
                 {!! Form::label('tags', 'Tags'); !!}
-                {!! Form::url('tags',null, ['class' => 'form-control',
+                {!! Form::text('tags',null, ['class' => 'form-control',
                     'placeholder' => 'Tags',
                     'title' => 'Enter a comma separated list of tags.',
                     'data-placement' => "top",

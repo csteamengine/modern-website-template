@@ -39,7 +39,7 @@ class StoreBlogRequest extends FormRequest
             'is_active' => 'sometimes|boolean',
             'started_at' => 'nullable|date',
             'finished_at' => 'nullable|date|after_or_equal:started_at',
-            'media.*' => 'nullable|image',
+            'media.*' => 'nullable|mimes:pdf,jpeg,jpg,png,mp4',
         ];
     }
 

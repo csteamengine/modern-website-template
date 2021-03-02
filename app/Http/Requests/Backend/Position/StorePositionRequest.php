@@ -37,7 +37,7 @@ class StorePositionRequest extends FormRequest
             'page_content' => 'nullable|string',
             'external_url' => 'nullable|url',
             'is_active' => 'sometimes|boolean',
-            'media.*' => 'nullable|image',
+            'media.*' => 'nullable|mimes:pdf,jpeg,jpg,png,mp4',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:started_at',
         ];

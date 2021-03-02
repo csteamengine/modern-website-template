@@ -32,6 +32,7 @@
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^3.11",
+        "spatie/pdf-to-image": "^2.1",
         "tabuna/breadcrumbs": "^2.2"
     },
     "require-dev": {

@@ -34,6 +34,7 @@ class StoreLinkRequest extends FormRequest
             'is_active' => 'sometimes|boolean',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:started_at',
+            'image' => 'nullable|mimes:pdf,jpeg,jpg,png,mp4',
         ];
     }
 }

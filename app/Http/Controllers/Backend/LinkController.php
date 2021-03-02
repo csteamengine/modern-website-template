@@ -137,13 +137,20 @@ class LinkController extends Controller
     public function addFiles(Request $request, Link $link)
     {
         if ($request->hasFile('image')) {
-            $extractor = new PHPColorExtractor();
-            $extractor->setImage($request->file('image'))->setTotalColors(5)->setGranularity(10);
-            $palette = $extractor->extractPalette();
+            $image = $request->file('image');
+            if ($image->getMimeType() == "application/pdf") {
+                $link->addMedia($image)
+                    ->withCustomProperties(['color' => '808080'])
+                    ->toMediaCollection('images');
+            } else {
+                $extractor = new PHPColorExtractor();
+                $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
+                $palette = $extractor->extractPalette();
 
-            $link->addMedia($request->file('image'))
-                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                ->toMediaCollection('image');
+                $link->addMedia($image)
+                    ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                    ->toMediaCollection('images');
+            }
         }
     }
 

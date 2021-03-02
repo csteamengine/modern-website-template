@@ -44,7 +44,7 @@ class StoreThemeRequest extends FormRequest
             'email' => 'required|email',
             'phone' => 'nullable',
             'is_active' => 'sometimes|boolean',
-            'media.*' => 'nullable|image',
+            'media.*' => 'nullable|mimes:pdf,jpeg,jpg,png,mp4',
             'resume' => 'nullable|file',
             'background_image' => 'nullable|image',
             'about_image' => 'nullable|image',
