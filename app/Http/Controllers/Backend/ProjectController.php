@@ -9,9 +9,12 @@ use App\Http\Requests\Backend\Project\StoreProjectRequest;
 use App\Http\Requests\Backend\Project\UpdateProjectRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
+use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use PHPColorExtractor\PHPColorExtractor;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -70,7 +73,7 @@ class ProjectController extends Controller
         //Create new project, store in database and associate all files with it.
         $project = $this->projectService->store($request->validated());
 
-        $this->addFiles($request, $project);
+        addFiles($request, $project, 'media', 'images');
 
         return redirect()
             ->route('admin.projects.edit', $project)
@@ -112,7 +115,7 @@ class ProjectController extends Controller
     {
         $this->projectService->update($project, $request->validated());
 
-        $this->addFiles($request, $project);
+        addFiles($request, $project, 'media', 'images');
 
         return redirect()->route('admin.projects.edit', $project)
             ->withFlashSuccess(__("Successfully Updated the Project"));
@@ -155,32 +158,5 @@ class ProjectController extends Controller
     public function activate(Project $project)
     {
         return activate($project);
-    }
-
-    /**
-     * @param Request $request
-     * @param Project $project
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
-     */
-    public function addFiles(Request $request, Project $project)
-    {
-        if ($request->hasFile('media')) {
-            foreach ($request->file('media') as $image) {
-                if ($image->getMimeType() == "application/pdf") {
-                    $project->addMedia($image)
-                        ->withCustomProperties(['color' => '808080'])
-                        ->toMediaCollection('images');
-                } else {
-                    $extractor = new PHPColorExtractor();
-                    $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
-                    $palette = $extractor->extractPalette();
-
-                    $project->addMedia($image)
-                        ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                        ->toMediaCollection('images');
-                }
-            }
-        }
     }
 }

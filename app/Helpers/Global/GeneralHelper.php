@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use PHPColorExtractor\PHPColorExtractor;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 if (! function_exists('appName')) {
@@ -171,3 +175,53 @@ if (! function_exists('deleteMedia')) {
         ], 400);
     }
 }
+if (! function_exists('addFiles')) {
+    /**
+     * @param Request $request
+     * @param HasMedia $model
+     * @param $input
+     * @param $collection
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
+    function addFiles(Request $request, HasMedia $model, $input, $collection)
+    {
+        if ($request->hasFile($input)) {
+            if (is_array($request->file($input))) {
+                foreach ($request->file($input) as $image) {
+                    addFileFromRequest($image, $model, $input, $collection);
+                }
+            } else {
+                addFileFromRequest($request->file($input), $model, $input, $collection);
+            }
+        }
+    }
+}
+
+if (! function_exists('addFileFromRequest')) {
+    /**
+     * @param $image
+     * @param HasMedia $model
+     * @param $input
+     * @param $collection
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
+    function addFileFromRequest($image, HasMedia $model, $input, $collection)
+    {
+        if ($image->getMimeType() == "application/pdf") {
+            $model->addMedia($image)
+                ->withCustomProperties(['color' => '808080'])
+                ->toMediaCollection($collection);
+        } else {
+            $extractor = new PHPColorExtractor();
+            $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
+            $palette = $extractor->extractPalette();
+
+            $model->addMedia($image)
+                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                ->toMediaCollection($collection);
+        }
+    }
+}
+

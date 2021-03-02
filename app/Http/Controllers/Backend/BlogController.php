@@ -70,7 +70,7 @@ class BlogController extends Controller
         //Create new blog, store in database and associate all files with it.
         $blog = $this->blogService->store($request->validated());
 
-        $this->addFiles($request, $blog);
+        addFiles($request, $blog, 'media', 'images');
 
         return redirect()
             ->route('admin.blogs.edit', $blog)
@@ -112,7 +112,7 @@ class BlogController extends Controller
     {
         $this->blogService->update($blog, $request->validated());
 
-        $this->addFiles($request, $blog);
+        addFiles($request, $blog, 'media', 'images');
 
         return redirect()->route('admin.blogs.edit', $blog)
             ->withFlashSuccess(__("Successfully Updated the Blog"));
@@ -155,32 +155,5 @@ class BlogController extends Controller
     public function activate(Blog $blog)
     {
         return activate($blog);
-    }
-
-    /**
-     * @param Request $request
-     * @param Blog $blog
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
-     */
-    public function addFiles(Request $request, Blog $blog)
-    {
-        if ($request->hasFile('media')) {
-            foreach ($request->file('media') as $image) {
-                if ($image->getMimeType() == "application/pdf") {
-                    $blog->addMedia($image)
-                        ->withCustomProperties(['color' => '808080'])
-                        ->toMediaCollection('images');
-                } else {
-                    $extractor = new PHPColorExtractor();
-                    $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
-                    $palette = $extractor->extractPalette();
-
-                    $blog->addMedia($image)
-                        ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                        ->toMediaCollection('images');
-                }
-            }
-        }
     }
 }

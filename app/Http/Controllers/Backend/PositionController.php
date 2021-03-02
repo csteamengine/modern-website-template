@@ -70,7 +70,7 @@ class PositionController extends Controller
         //Create new position, store in database and associate all files with it.
         $position = $this->positionService->store($request->validated());
 
-        $this->addFiles($request, $position);
+        addFiles($request, $position, 'media', 'images');
 
         return redirect()
             ->route('admin.positions.edit', $position)
@@ -113,7 +113,7 @@ class PositionController extends Controller
     {
         $this->positionService->update($position, $request->validated());
 
-        $this->addFiles($request, $position);
+        addFiles($request, $position, 'media', 'images');
 
         return redirect()
             ->route('admin.positions.edit', $position)
@@ -170,32 +170,5 @@ class PositionController extends Controller
     public function activate(Position $position)
     {
         return activate($position);
-    }
-
-    /**
-     * @param Request $request
-     * @param Position $position
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
-     */
-    public function addFiles(Request $request, Position $position)
-    {
-        if ($request->hasFile('media')) {
-            foreach ($request->file('media') as $image) {
-                if ($image->getMimeType() == "application/pdf") {
-                    $position->addMedia($image)
-                        ->withCustomProperties(['color' => '808080'])
-                        ->toMediaCollection('images');
-                } else {
-                    $extractor = new PHPColorExtractor();
-                    $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
-                    $palette = $extractor->extractPalette();
-
-                    $position->addMedia($image)
-                        ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                        ->toMediaCollection('images');
-                }
-            }
-        }
     }
 }

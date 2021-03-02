@@ -70,7 +70,7 @@ class ThemeController extends Controller
         //Create new theme, store in database and associate all files with it.
         $theme = $this->themeService->store($request->validated());
 
-        $this->addFiles($request, $theme);
+        $this->addAllFiles($request, $theme);
 
         return redirect()
             ->route('admin.themes.edit', $theme)
@@ -112,7 +112,7 @@ class ThemeController extends Controller
     {
         $this->themeService->update($theme, $request->validated());
 
-        $this->addFiles($request, $theme);
+        $this->addAllFiles($request, $theme);
 
         return redirect()
             ->route('admin.themes.edit', $theme)
@@ -189,25 +189,9 @@ class ThemeController extends Controller
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function addFiles(Request $request, Theme $theme)
+    public function addAllFiles(Request $request, Theme $theme)
     {
-        if ($request->hasFile('media')) {
-            foreach ($request->file('media') as $image) {
-                if ($image->getMimeType() == "application/pdf") {
-                    $theme->addMedia($image)
-                        ->withCustomProperties(['color' => '808080'])
-                        ->toMediaCollection('images');
-                } else {
-                    $extractor = new PHPColorExtractor();
-                    $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
-                    $palette = $extractor->extractPalette();
-
-                    $theme->addMedia($image)
-                        ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                        ->toMediaCollection('images');
-                }
-            }
-        }
+        addFiles($request, $theme, 'media', 'images');
 
         if ($request->hasFile('background_image')) {
             $extractor = new PHPColorExtractor();
