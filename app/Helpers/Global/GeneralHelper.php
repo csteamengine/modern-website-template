@@ -69,10 +69,9 @@ if (! function_exists('getActiveTheme')) {
      */
     function getActiveTheme()
     {
-        try {
-            $theme = Theme::where('is_active', true)->firstOrFail();
-        } catch (ModelNotFoundException $exception) {
-            abort(503);
+        $theme = Theme::where('is_active', true)->first();
+        if ($theme == null) {
+            $theme = new Theme();
         }
 
         return $theme;
