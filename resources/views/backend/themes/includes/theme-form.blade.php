@@ -180,7 +180,7 @@
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col col-6 col-sm-3">
+        <div class="col">
             <div class="form-group">
                 {!! Form::label('media-label',"Upload Media"); !!}
                 <div class="custom-file">
@@ -189,30 +189,44 @@
                 </div>
             </div>
         </div>
-        <div class="col col-6 col-sm-3">
+    </div>
+    <div class="row mb-2">
+        <div class="col col-6">
             <div class="form-group">
-                {!! Form::label('resume-label',"Upload Resume"); !!}
+                {!! Form::label('resume-label',"Resume"); !!}
                 <div class="custom-file">
                     {!! Form::label('resume-label',"Upload Resume", ['class' => 'custom-file-label']); !!}
                     {!! Form::file('resume', ['class' => 'custom-file-input']); !!}
                 </div>
             </div>
         </div>
-        <div class="col col-6 col-sm-3">
+        <div class="col col-6">
             <div class="form-group">
-                {!! Form::label('background-image-label',"Upload Background Image"); !!}
+                {!! Form::label('background-image-label',"Background Image"); !!}
                 <div class="custom-file">
                     {!! Form::label('background-image-label',"Upload Image", ['class' => 'custom-file-label']); !!}
                     {!! Form::file('background_image', ['class' => 'custom-file-input']); !!}
                 </div>
             </div>
         </div>
-        <div class="col">
+    </div>
+
+    <div class="row mb-2">
+        <div class="col col-6">
             <div class="form-group">
-                {!! Form::label('about-image-label',"Upload Image"); !!}
+                {!! Form::label('about-image-label',"About Image"); !!}
                 <div class="custom-file">
                     {!! Form::label('about-image-label',"Upload About Image", ['class' => 'custom-file-label']); !!}
                     {!! Form::file('about_image', ['class' => 'custom-file-input']); !!}
+                </div>
+            </div>
+        </div>
+        <div class="col col-6">
+            <div class="form-group">
+                {!! Form::label('favicon-label',"Upload Favicon"); !!}
+                <div class="custom-file">
+                    {!! Form::label('favicon-label',"Upload Favicon", ['class' => 'custom-file-label']); !!}
+                    {!! Form::file('favicon', ['class' => 'custom-file-input']); !!}
                 </div>
             </div>
         </div>

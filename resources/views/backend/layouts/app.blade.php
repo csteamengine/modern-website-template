@@ -8,6 +8,11 @@
     <meta name="description" content="@yield('meta_description', appName())">
     <meta name="author" content="@yield('meta_author', 'Charlie Steenhagen')">
 
+    @if($active_theme->favicon() != null)
+        <link rel="icon"
+              type="{{$active_theme->favicon()->mime_type}}"
+              href="{{$active_theme->favicon()->getUrl()}}">
+    @endif
 
     @yield('meta')
 

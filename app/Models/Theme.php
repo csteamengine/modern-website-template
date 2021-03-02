@@ -40,16 +40,10 @@ class Theme extends Model implements HasMedia
         'twitter_url',
         'youtube_url',
         'tiktok_url',
-        'resume_file_id',
-        'background_image_id',
-        'about_image_id',
         'is_maintenance_mode',
         'contact_active',
         'resume_active',
         'background_video_active',
-        'background_image_id',
-        'resume_file_id',
-        'about_image_id',
         'primary_color',
         'secondary_color',
         'background_color',
@@ -84,7 +78,7 @@ class Theme extends Model implements HasMedia
      */
     public function resume()
     {
-        return $this->getMedia('resumes')->where('id', $this->resume_file_id)->first();
+        return $this->getMedia('resumes')->last();
     }
 
     /**
@@ -92,7 +86,7 @@ class Theme extends Model implements HasMedia
      */
     public function background_image()
     {
-        return $this->getMedia('background_images')->where('id', $this->background_image_id)->first();
+        return $this->getMedia('background_images')->last();
     }
 
     /**
@@ -100,7 +94,15 @@ class Theme extends Model implements HasMedia
      */
     public function about_image()
     {
-        return $this->getMedia('about_images')->where('id', $this->about_image_id)->first();
+        return $this->getMedia('about_images')->last();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function favicon()
+    {
+        return $this->getMedia('favicons')->last();
     }
 
     /**

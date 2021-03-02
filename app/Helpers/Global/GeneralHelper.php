@@ -189,10 +189,10 @@ if (! function_exists('addFiles')) {
         if ($request->hasFile($input)) {
             if (is_array($request->file($input))) {
                 foreach ($request->file($input) as $image) {
-                    addFileFromRequest($image, $model, $input, $collection);
+                    addFileToModel($image, $model, $collection);
                 }
             } else {
-                addFileFromRequest($request->file($input), $model, $input, $collection);
+                addFileToModel($request->file($input), $model, $collection);
             }
         }
     }
@@ -207,21 +207,22 @@ if (! function_exists('addFileFromRequest')) {
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    function addFileFromRequest($image, HasMedia $model, $input, $collection)
+    function addFileToModel($image, HasMedia $model, $collection)
     {
-        if ($image->getMimeType() == "application/pdf") {
-            $model->addMedia($image)
-                ->withCustomProperties(['color' => '808080'])
-                ->toMediaCollection($collection);
-        } else {
-            $extractor = new PHPColorExtractor();
-            $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
-            $palette = $extractor->extractPalette();
+        if ($image != null) {
+            if ($image->getMimeType() == "application/pdf") {
+                $model->addMedia($image)
+                    ->withCustomProperties(['color' => '808080'])
+                    ->toMediaCollection($collection);
+            } else {
+                $extractor = new PHPColorExtractor();
+                $extractor->setImage($image)->setTotalColors(5)->setGranularity(10);
+                $palette = $extractor->extractPalette();
 
-            $model->addMedia($image)
-                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                ->toMediaCollection($collection);
+                $model->addMedia($image)
+                    ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
+                    ->toMediaCollection($collection);
+            }
         }
     }
 }
-

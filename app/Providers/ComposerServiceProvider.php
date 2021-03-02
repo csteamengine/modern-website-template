@@ -19,11 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot(AnnouncementService $announcementService)
     {
         View::composer('*', function ($view) {
-            $view->with('logged_in_user', auth()->user());
-        });
-
-        View::composer('frontend.*', function ($view) {
-            $view->with('active_theme', getActiveTheme());
+            $view->with('logged_in_user', auth()->user())->with('active_theme', getActiveTheme());
         });
 
         View::composer(['frontend.index', 'frontend.layouts.app'], function ($view) use ($announcementService) {

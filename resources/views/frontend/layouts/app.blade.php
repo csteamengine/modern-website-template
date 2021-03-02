@@ -8,6 +8,13 @@
     <meta name="description" content="@yield('meta_description', appName())">
     <meta name="author" content="@yield('meta_author', 'Charlie Steenhagen')">
 
+    @if($active_theme->favicon() != null)
+        <link rel="icon"
+              type="{{$active_theme->favicon()->mime_type}}"
+              href="{{$active_theme->favicon()->getUrl()}}">
+    @endif
+
+
     @if(config('analytics.enabled') && config('analytics.measurement_id') !== null)
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33CV6KX0M"></script>
         <script>

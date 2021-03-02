@@ -48,6 +48,7 @@ class StoreThemeRequest extends FormRequest
             'resume' => 'nullable|file',
             'background_image' => 'nullable|image',
             'about_image' => 'nullable|image',
+            'favicon' => 'nullable|image',
             'is_maintenance_mode' => 'sometimes|boolean',
             'contact_active' => 'sometimes|boolean',
             'resume_active' => 'sometimes|boolean',

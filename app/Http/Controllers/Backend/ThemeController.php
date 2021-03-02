@@ -11,7 +11,6 @@ use App\Models\Theme;
 use App\Services\ThemeService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use PHPColorExtractor\PHPColorExtractor;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -192,36 +191,9 @@ class ThemeController extends Controller
     public function addAllFiles(Request $request, Theme $theme)
     {
         addFiles($request, $theme, 'media', 'images');
-
-        if ($request->hasFile('background_image')) {
-            $extractor = new PHPColorExtractor();
-            $extractor->setImage($request->file('background_image'))->setTotalColors(5)->setGranularity(10);
-            $palette = $extractor->extractPalette();
-
-            $backgroundImage = $theme->addMedia($request->file('background_image'))
-                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                ->toMediaCollection('background_images');
-            $theme->background_image_id = $backgroundImage->id;
-        }
-
-        if ($request->hasFile('about_image')) {
-            $extractor = new PHPColorExtractor();
-            $extractor->setImage($request->file('about_image'))->setTotalColors(5)->setGranularity(10);
-            $palette = $extractor->extractPalette();
-
-            $aboutImage = $theme->addMedia($request->file('about_image'))
-                ->withCustomProperties(['color' => $palette[sizeof($palette) - 1]])
-                ->toMediaCollection('about_images');
-            $theme->about_image_id = $aboutImage->id;
-        }
-
-        if ($request->hasFile('resume')) {
-            $resume = $theme->addMedia($request->file('resume'))
-                ->withCustomProperties(['color' => '808080'])
-                ->toMediaCollection('resumes');
-            $theme->resume_file_id = $resume->id;
-        }
-
-        return $theme->save();
+        addFileToModel($request->file('background_image'), $theme, 'background_images');
+        addFileToModel($request->file('about_image'), $theme, 'about_images');
+        addFileToModel($request->file('resume'), $theme, 'resumes');
+        addFileToModel($request->file('favicon'), $theme, 'favicons');
     }
 }

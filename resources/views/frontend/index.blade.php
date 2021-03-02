@@ -8,6 +8,12 @@
         <meta name="author" content="@yield('meta_author', 'Charlie Steenhagen')">
         @yield('meta')
 
+        @if($active_theme->favicon() != null)
+            <link rel="icon"
+                  type="{{$active_theme->favicon()->mime_type}}"
+                  href="{{$active_theme->favicon()->getUrl()}}">
+        @endif
+
         @stack('before-styles')
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">

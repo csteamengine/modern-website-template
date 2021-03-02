@@ -28,9 +28,6 @@ class CreateThemesTable extends Migration
             $table->string('tiktok_url')->nullable();
             $table->text('description')->nullable();
             $table->longText('page_content')->nullable();
-            $table->string('resume_file_id')->nullable();
-            $table->integer('background_image_id')->nullable();
-            $table->integer('about_image_id')->nullable();
             $table->integer('order')->default(0);
             $table->boolean('is_active')->default(true);
             $table->boolean('is_maintenance_mode')->default(false);
