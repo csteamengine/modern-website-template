@@ -198,7 +198,7 @@ if (! function_exists('addFiles')) {
     }
 }
 
-if (! function_exists('addFileFromRequest')) {
+if (! function_exists('addFileToModel')) {
     /**
      * @param $image
      * @param HasMedia $model
