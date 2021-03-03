@@ -7,6 +7,7 @@ $(document).ready(function() {
             { targets: 1, visible: false }
         ]
     } );
+
     $('.media-delete-button').on('click',function(){
         var route = $(this).data('action');
         var csrf_token = $('#csrfValue').val();
@@ -19,8 +20,6 @@ $(document).ready(function() {
 
         success = $.fn.ajaxCall(id, route, csrf_token, 'DELETE',deleteRow);
     })
-
-
 
     table.on('row-reordered', function (e, diff, edit) {
         table.one('draw', function () {
@@ -37,8 +36,7 @@ $(document).ready(function() {
 
             var route = $('#orderRoute').val();
             var csrf_token = $('#csrfValue').val();
-            var id = $(this).data('id');
-            $.fn.ajaxCall(id, route, csrf_token, 'PATCH');
+            $.fn.ajaxCall(json, route, csrf_token, 'PATCH');
         });
 
     });

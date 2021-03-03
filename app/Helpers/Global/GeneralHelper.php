@@ -140,10 +140,10 @@ if (! function_exists('reorderMedia')) {
     function reorderMedia(Request $request)
     {
         $validatedJSON = $request->validate([
-            'media' => 'required|JSON',
+            'objects' => 'required|JSON',
         ]);
 
-        $data = json_decode($validatedJSON['media']);
+        $data = json_decode($validatedJSON['objects']);
 
         Media::setNewOrder($data);
 
