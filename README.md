@@ -4,22 +4,12 @@
 <br/>
 ![GitHub stars](https://img.shields.io/github/stars/csteamengine/modern-website-template.svg?style=social)
 
-### Demo Credentials
-
-**Admin:** admin@admin.com  
-**Password:** secret
-
-**User:** user@user.com  
-**Password:** secret
+![alt text](https://github.com/csteamengine/modern-website-template/blob/media/projects.png?raw=true)
 
 ### Official Documentation
 This is a branch off of the popular Laravel Boilerplate.
 
 [Click here for the official documentation](http://laravel-boilerplate.com)
-
-### Slack Channel
-
-No Slack Channel as of right now.
 
 ### Introduction
 
@@ -34,6 +24,14 @@ For now, the site is setup to provide projects, jobs, links, etc... to each view
 I'm hoping to update this documentation further as the project progresses, so make sure to keep an eye out here.
 
 For now, enjoy!
+
+### Demo Credentials
+
+**Admin:** admin@admin.com  
+**Password:** secret
+
+**User:** user@user.com  
+**Password:** secret
 
 ### Overview
 This project was build with Laravel and Homestead, based on the [Laravel Boilerplate](http://laravel-boilerplate.com). 
