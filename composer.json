@@ -27,6 +27,7 @@
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.2",
         "livewire/livewire": "^2.0",
+        "php-ffmpeg/php-ffmpeg": "^0.17.0",
         "rappasoft/laravel-livewire-tables": "^0.3",
         "rappasoft/lockout": "^3.0",
         "spatie/laravel-activitylog": "^3.14",

@@ -123,6 +123,9 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
+    'ffmpeg.binaries' => 'usr/local/bin/ffmpeg',
+    'ffprobe.binaries' => 'usr/local/bin/ffprobe',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

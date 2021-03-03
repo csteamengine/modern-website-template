@@ -18,14 +18,14 @@
             <td>{{$loop->index+1}}</td>
             <td>{{$media->id}}</td>
             <td>
-                <img src="{{$media->getUrl($media->mime_type == 'application/pdf' ? "thumb" : "")}}"
+                <img src="{{$media->getUrl(displayThumbnail($media) ? "thumb" : "")}}"
                      style="width: 50px;"
                      alt="Image"
                      class="media-image"
                      data-placement="right"
                      data-html="true"
                      data-toggle="tooltip"
-                     title="<img src='{{$media->getUrl($media->mime_type == 'application/pdf' ? "thumb" : "")}}' width='100%' />">
+                     title="<img src='{{$media->getUrl(displayThumbnail($media) ? "thumb" : "")}}' width='100%' />">
             </td>
             <td>{{$media->name}}</td>
             <td>{{$media->getCustomProperty('color')}}</td>
