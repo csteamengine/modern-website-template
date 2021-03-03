@@ -4,7 +4,7 @@
 <br/>
 ![GitHub stars](https://img.shields.io/github/stars/csteamengine/modern-website-template.svg?style=social)
 
-![alt text](https://github.com/csteamengine/modern-website-template/blob/media/projects.png?raw=true)
+![Projects Page](https://github.com/csteamengine/modern-website-template/blob/media/projects.png?raw=true)
 
 ### Official Documentation
 This is a branch off of the popular Laravel Boilerplate.
