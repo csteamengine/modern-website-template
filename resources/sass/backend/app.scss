@@ -9,3 +9,42 @@
 .note-editor{
     background-color: white !important;
 }
+
+.square:before{
+    content: "";
+    display: block;
+    padding-top: 100%;  /* initial ratio of 1:1*/
+}
+.square{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.thumbnail{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.thumbnail-overlay{
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: all .25s;
+    -webkit-transition: all .25s;
+    -o-transition: all .25s;
+    -moz-transition: all .25s;
+}
+
+.img-thumbnail:hover{
+    .thumbnail-overlay {
+        opacity: 1;
+    }
+}

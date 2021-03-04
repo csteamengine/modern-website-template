@@ -239,3 +239,13 @@ if (! function_exists('displayThumbnail')) {
         return false;
     }
 }
+
+if (! function_exists('getPlaceholder')){
+
+    /**
+     * Gets the default placeholder in /storage/app/public/img
+     */
+    function getPlaceholder(){
+        return "storage/img/placeholder.png";
+    }
+}

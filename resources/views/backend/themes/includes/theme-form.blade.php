@@ -199,59 +199,60 @@
             </div>
         </div>
     </div>
+
     <div class="row mb-2">
-        <div class="col col-4 m-auto">
-            @if($theme->background_image() != null)
-                <img src="{{$theme->background_image()->getUrl()}}" class="img-thumbnail">
-            @else
-
-            @endif
-        </div>
-        <div class="col col-4">
-            @if($theme->about_image() != null)
-                <img src="{{$theme->about_image()->getUrl()}}" class="img-thumbnail">
-            @else
-
-            @endif
-        </div>
-        <div class="col col-4">
-            @if($theme->resume() != null)
-                <img src="{{$theme->resume()->getUrl('thumb')}}" class="img-thumbnail">
-            @else
-
-            @endif
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col col-4">
+        <div class="col col-4 m-auto text-center " >
             <div class="form-group">
-                {!! Form::label('background-image-label',"Background Image"); !!}
-                <div class="custom-file">
-                    {!! Form::label('background-image-label',"Upload Image", ['class' => 'custom-file-label']); !!}
-                    {!! Form::file('background_image', ['class' => 'custom-file-input']); !!}
+                {!! Form::label('background_image',"Background Image"); !!}
+                {!! Form::file('background_image', ['hidden' => 'hidden', 'id' => 'backgroundInput']); !!}
+                <div class="square img-thumbnail" role="button" data-trigger="#backgroundInput">
+                    <div class="thumbnail-overlay img-thumbnail">
+                        <div class="row h-100 m-auto">
+                            <div class="col m-auto">
+                                <i class="thumbnail-icon fas fa-edit fa-2x m-auto text-light"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail img-thumbnail" style="background: url('{{$theme->background_image() != null ? $theme->background_image()->getUrl('thumb') : asset(getPlaceholder())}}') center center; background-size: cover">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col col-4">
+        <div class="col col-4 m-auto text-center " >
             <div class="form-group">
-                {!! Form::label('about-image-label',"About Image"); !!}
-                <div class="custom-file">
-                    {!! Form::label('about-image-label',"Upload About Image", ['class' => 'custom-file-label']); !!}
-                    {!! Form::file('about_image', ['class' => 'custom-file-input']); !!}
+                {!! Form::label('about_image_label',"About Image"); !!}
+                {!! Form::file('about_image', ['hidden' => 'hidden', 'id' => 'aboutInput']); !!}
+                <div class="square img-thumbnail" role="button" data-trigger="#aboutInput">
+                    <div class="thumbnail-overlay img-thumbnail">
+                        <div class="row h-100 m-auto">
+                            <div class="col m-auto">
+                                <i class="thumbnail-icon fas fa-edit fa-2x m-auto text-light"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail img-thumbnail" style="background: url('{{$theme->about_image() != null ? $theme->about_image()->getUrl('thumb') : asset(getPlaceholder())}}') center center; background-size: cover">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col col-4">
+        <div class="col col-4 m-auto text-center " >
             <div class="form-group">
                 {!! Form::label('resume-label',"Resume"); !!}
-                <div class="custom-file">
-                    {!! Form::label('resume-label',"Upload Resume", ['class' => 'custom-file-label']); !!}
-                    {!! Form::file('resume', ['class' => 'custom-file-input']); !!}
+                {!! Form::file('resume', ['hidden' => 'hidden', 'id' => 'resumeInput']); !!}
+                <div class="square img-thumbnail" role="button" data-trigger="#resumeInput">
+                    <div class="thumbnail-overlay img-thumbnail">
+                        <div class="row h-100 m-auto">
+                            <div class="col m-auto">
+                                <i class="thumbnail-icon fas fa-edit fa-2x m-auto text-light"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail img-thumbnail" style="background: url('{{$theme->resume() != null ? $theme->resume()->getUrl('thumb') : asset(getPlaceholder())}}') center center; background-size: cover">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row mb-2">
         <div class="col col-4">
             <div class="form-group">
