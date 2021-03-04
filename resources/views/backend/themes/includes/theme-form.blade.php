@@ -180,26 +180,25 @@
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col col-6">
+        <div class="col col-4">
             <div class="form-group">
-                {!! Form::label('media-label',"Upload Media"); !!}
-                <div class="custom-file">
-                    {!! Form::label('media-label',"Upload Media", ['class' => 'custom-file-label']); !!}
-                    {!! Form::file('media[]', ['class' => 'custom-file-input', 'multiple' => true]); !!}
-                </div>
+                {!! Form::label('primary_color', 'Primary Color'); !!}
+                {!! Form::color('primary_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
             </div>
         </div>
-        <div class="col col-6">
+        <div class="col col-4">
             <div class="form-group">
-                {!! Form::label('favicon-label',"Upload Favicon"); !!}
-                <div class="custom-file">
-                    {!! Form::label('favicon-label',"Upload Favicon", ['class' => 'custom-file-label']); !!}
-                    {!! Form::file('favicon', ['class' => 'custom-file-input']); !!}
-                </div>
+                {!! Form::label('secondary_color', 'Secondary Color'); !!}
+                {!! Form::color('secondary_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
+            </div>
+        </div>
+        <div class="col col-4">
+            <div class="form-group">
+                {!! Form::label('background_color', 'Background Color'); !!}
+                {!! Form::color('background_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
             </div>
         </div>
     </div>
-
     <div class="row mb-2">
         <div class="col col-4 m-auto text-center " >
             <div class="form-group">
@@ -237,7 +236,7 @@
         </div>
         <div class="col col-4 m-auto text-center " >
             <div class="form-group">
-                {!! Form::label('resume-label',"Resume"); !!}
+                {!! Form::label('resume-label',"Resume/CV File"); !!}
                 {!! Form::file('resume', ['hidden' => 'hidden', 'id' => 'resumeInput']); !!}
                 <div class="square img-thumbnail" role="button" data-trigger="#resumeInput">
                     <div class="thumbnail-overlay img-thumbnail">
@@ -253,23 +252,24 @@
             </div>
         </div>
     </div>
+
     <div class="row mb-2">
-        <div class="col col-4">
+        <div class="col col-6">
             <div class="form-group">
-                {!! Form::label('primary_color', 'Primary Color'); !!}
-                {!! Form::color('primary_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
+                {!! Form::label('media-label',"Upload Media"); !!}
+                <div class="custom-file">
+                    {!! Form::label('media-label',"Upload Media", ['class' => 'custom-file-label']); !!}
+                    {!! Form::file('media[]', ['class' => 'custom-file-input', 'multiple' => true]); !!}
+                </div>
             </div>
         </div>
-        <div class="col col-4">
+        <div class="col col-6">
             <div class="form-group">
-                {!! Form::label('secondary_color', 'Secondary Color'); !!}
-                {!! Form::color('secondary_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
-            </div>
-        </div>
-        <div class="col col-4">
-            <div class="form-group">
-                {!! Form::label('background_color', 'Background Color'); !!}
-                {!! Form::color('background_color',null, ['class' => 'form-control', 'placeholder' => 'Contact Email']); !!}
+                {!! Form::label('favicon-label',"Upload Favicon"); !!}
+                <div class="custom-file">
+                    {!! Form::label('favicon-label',"Upload Favicon", ['class' => 'custom-file-label']); !!}
+                    {!! Form::file('favicon', ['class' => 'custom-file-input']); !!}
+                </div>
             </div>
         </div>
     </div>
